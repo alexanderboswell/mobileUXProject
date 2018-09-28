@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F38DC6AA215D8A740055C345 /* SessionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DC6A9215D8A740055C345 /* SessionsTableViewController.swift */; };
+		F38DC6AC215D8B220055C345 /* SessionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DC6AB215D8B220055C345 /* SessionsTableViewCell.swift */; };
+		F38DC6AE215D91A60055C345 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DC6AD215D91A60055C345 /* Extensions.swift */; };
 		F3DE2531215841D30097B8DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DE2530215841D30097B8DE /* AppDelegate.swift */; };
-		F3DE2533215841D30097B8DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DE2532215841D30097B8DE /* ViewController.swift */; };
 		F3DE2536215841D30097B8DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3DE2534215841D30097B8DE /* Main.storyboard */; };
 		F3DE2538215841D40097B8DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3DE2537215841D40097B8DE /* Assets.xcassets */; };
 		F3DE253B215841D40097B8DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3DE2539215841D40097B8DE /* LaunchScreen.storyboard */; };
@@ -34,9 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F38DC6A9215D8A740055C345 /* SessionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsTableViewController.swift; sourceTree = "<group>"; };
+		F38DC6AB215D8B220055C345 /* SessionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsTableViewCell.swift; sourceTree = "<group>"; };
+		F38DC6AD215D91A60055C345 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F3DE252D215841D30097B8DE /* mobileUXproject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mobileUXproject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3DE2530215841D30097B8DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F3DE2532215841D30097B8DE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F3DE2535215841D30097B8DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F3DE2537215841D40097B8DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3DE253A215841D40097B8DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -98,11 +102,13 @@
 			isa = PBXGroup;
 			children = (
 				F3DE2530215841D30097B8DE /* AppDelegate.swift */,
-				F3DE2532215841D30097B8DE /* ViewController.swift */,
 				F3DE2534215841D30097B8DE /* Main.storyboard */,
 				F3DE2537215841D40097B8DE /* Assets.xcassets */,
 				F3DE2539215841D40097B8DE /* LaunchScreen.storyboard */,
 				F3DE253C215841D40097B8DE /* Info.plist */,
+				F38DC6A9215D8A740055C345 /* SessionsTableViewController.swift */,
+				F38DC6AB215D8B220055C345 /* SessionsTableViewCell.swift */,
+				F38DC6AD215D91A60055C345 /* Extensions.swift */,
 			);
 			path = mobileUXproject;
 			sourceTree = "<group>";
@@ -256,8 +262,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3DE2533215841D30097B8DE /* ViewController.swift in Sources */,
+				F38DC6AE215D91A60055C345 /* Extensions.swift in Sources */,
+				F38DC6AC215D8B220055C345 /* SessionsTableViewCell.swift in Sources */,
 				F3DE2531215841D30097B8DE /* AppDelegate.swift in Sources */,
+				F38DC6AA215D8A740055C345 /* SessionsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
