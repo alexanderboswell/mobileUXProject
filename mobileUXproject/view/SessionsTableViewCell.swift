@@ -9,7 +9,18 @@
 import UIKit
 
 class SessionsTableViewCell: UITableViewCell {
+	
+	var collectionViewOffset: CGFloat {
+		get {
+			return collectionView.contentOffset.x
+		}
+		
+		set {
+			collectionView.contentOffset.x = newValue
+		}
+	}
 
+	@IBOutlet weak var sessionsLabel: UILabel!
 	@IBOutlet private weak var collectionView: UICollectionView!
 	
     override func awakeFromNib() {

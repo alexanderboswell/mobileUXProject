@@ -10,12 +10,20 @@
 		F38DC6AA215D8A740055C345 /* SessionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DC6A9215D8A740055C345 /* SessionsTableViewController.swift */; };
 		F38DC6AC215D8B220055C345 /* SessionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DC6AB215D8B220055C345 /* SessionsTableViewCell.swift */; };
 		F38DC6AE215D91A60055C345 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DC6AD215D91A60055C345 /* Extensions.swift */; };
+		F3CD23D9216080AC00353EFB /* SessionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CD23D8216080AC00353EFB /* SessionCollectionViewCell.swift */; };
+		F3CD23E12160942200353EFB /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CD23E02160942200353EFB /* SessionViewController.swift */; };
+		F3CD23E42160959800353EFB /* SlideInPresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CD23E32160959800353EFB /* SlideInPresentationManager.swift */; };
+		F3CD23E6216095E600353EFB /* SlideInPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CD23E5216095E600353EFB /* SlideInPresentationController.swift */; };
 		F3DE2531215841D30097B8DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DE2530215841D30097B8DE /* AppDelegate.swift */; };
 		F3DE2536215841D30097B8DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3DE2534215841D30097B8DE /* Main.storyboard */; };
 		F3DE2538215841D40097B8DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3DE2537215841D40097B8DE /* Assets.xcassets */; };
 		F3DE253B215841D40097B8DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3DE2539215841D40097B8DE /* LaunchScreen.storyboard */; };
 		F3DE2546215841D40097B8DE /* mobileUXprojectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DE2545215841D40097B8DE /* mobileUXprojectTests.swift */; };
 		F3DE2551215841D40097B8DE /* mobileUXprojectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DE2550215841D40097B8DE /* mobileUXprojectUITests.swift */; };
+		F3FC8141215EA8A300878CFC /* StudySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC8140215EA8A300878CFC /* StudySession.swift */; };
+		F3FC8143215EAA0100878CFC /* AccountInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC8142215EAA0100878CFC /* AccountInfo.swift */; };
+		F3FC8145215EABF900878CFC /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC8144215EABF900878CFC /* Course.swift */; };
+		F3FC8147215EADC000878CFC /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC8146215EADC000878CFC /* Client.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +47,10 @@
 		F38DC6A9215D8A740055C345 /* SessionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsTableViewController.swift; sourceTree = "<group>"; };
 		F38DC6AB215D8B220055C345 /* SessionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsTableViewCell.swift; sourceTree = "<group>"; };
 		F38DC6AD215D91A60055C345 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F3CD23D8216080AC00353EFB /* SessionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCollectionViewCell.swift; sourceTree = "<group>"; };
+		F3CD23E02160942200353EFB /* SessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
+		F3CD23E32160959800353EFB /* SlideInPresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationManager.swift; sourceTree = "<group>"; };
+		F3CD23E5216095E600353EFB /* SlideInPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationController.swift; sourceTree = "<group>"; };
 		F3DE252D215841D30097B8DE /* mobileUXproject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mobileUXproject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3DE2530215841D30097B8DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3DE2535215841D30097B8DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -51,6 +63,10 @@
 		F3DE254C215841D40097B8DE /* mobileUXprojectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mobileUXprojectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3DE2550215841D40097B8DE /* mobileUXprojectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mobileUXprojectUITests.swift; sourceTree = "<group>"; };
 		F3DE2552215841D40097B8DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3FC8140215EA8A300878CFC /* StudySession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySession.swift; sourceTree = "<group>"; };
+		F3FC8142215EAA0100878CFC /* AccountInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfo.swift; sourceTree = "<group>"; };
+		F3FC8144215EABF900878CFC /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		F3FC8146215EADC000878CFC /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +94,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F3CD23E22160958100353EFB /* Presentaion */ = {
+			isa = PBXGroup;
+			children = (
+				F3CD23E32160959800353EFB /* SlideInPresentationManager.swift */,
+				F3CD23E5216095E600353EFB /* SlideInPresentationController.swift */,
+			);
+			path = Presentaion;
+			sourceTree = "<group>";
+		};
 		F3DE2524215841D30097B8DE = {
 			isa = PBXGroup;
 			children = (
@@ -101,13 +126,13 @@
 		F3DE252F215841D30097B8DE /* mobileUXproject */ = {
 			isa = PBXGroup;
 			children = (
+				F3CD23E22160958100353EFB /* Presentaion */,
+				F3FC813F215EA86900878CFC /* controller */,
+				F3FC813E215EA86000878CFC /* model */,
+				F3FC813D215EA85800878CFC /* view */,
 				F3DE2530215841D30097B8DE /* AppDelegate.swift */,
-				F3DE2534215841D30097B8DE /* Main.storyboard */,
 				F3DE2537215841D40097B8DE /* Assets.xcassets */,
-				F3DE2539215841D40097B8DE /* LaunchScreen.storyboard */,
 				F3DE253C215841D40097B8DE /* Info.plist */,
-				F38DC6A9215D8A740055C345 /* SessionsTableViewController.swift */,
-				F38DC6AB215D8B220055C345 /* SessionsTableViewCell.swift */,
 				F38DC6AD215D91A60055C345 /* Extensions.swift */,
 			);
 			path = mobileUXproject;
@@ -129,6 +154,37 @@
 				F3DE2552215841D40097B8DE /* Info.plist */,
 			);
 			path = mobileUXprojectUITests;
+			sourceTree = "<group>";
+		};
+		F3FC813D215EA85800878CFC /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F38DC6AB215D8B220055C345 /* SessionsTableViewCell.swift */,
+				F3DE2534215841D30097B8DE /* Main.storyboard */,
+				F3DE2539215841D40097B8DE /* LaunchScreen.storyboard */,
+				F3CD23D8216080AC00353EFB /* SessionCollectionViewCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F3FC813E215EA86000878CFC /* model */ = {
+			isa = PBXGroup;
+			children = (
+				F3FC8140215EA8A300878CFC /* StudySession.swift */,
+				F3FC8142215EAA0100878CFC /* AccountInfo.swift */,
+				F3FC8144215EABF900878CFC /* Course.swift */,
+				F3FC8146215EADC000878CFC /* Client.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		F3FC813F215EA86900878CFC /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				F38DC6A9215D8A740055C345 /* SessionsTableViewController.swift */,
+				F3CD23E02160942200353EFB /* SessionViewController.swift */,
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,10 +318,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3CD23D9216080AC00353EFB /* SessionCollectionViewCell.swift in Sources */,
 				F38DC6AE215D91A60055C345 /* Extensions.swift in Sources */,
+				F3FC8145215EABF900878CFC /* Course.swift in Sources */,
+				F3CD23E12160942200353EFB /* SessionViewController.swift in Sources */,
 				F38DC6AC215D8B220055C345 /* SessionsTableViewCell.swift in Sources */,
 				F3DE2531215841D30097B8DE /* AppDelegate.swift in Sources */,
 				F38DC6AA215D8A740055C345 /* SessionsTableViewController.swift in Sources */,
+				F3FC8141215EA8A300878CFC /* StudySession.swift in Sources */,
+				F3CD23E42160959800353EFB /* SlideInPresentationManager.swift in Sources */,
+				F3FC8147215EADC000878CFC /* Client.swift in Sources */,
+				F3CD23E6216095E600353EFB /* SlideInPresentationController.swift in Sources */,
+				F3FC8143215EAA0100878CFC /* AccountInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +507,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A6N8P4N2HZ;
 				INFOPLIST_FILE = mobileUXproject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -461,6 +526,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A6N8P4N2HZ;
 				INFOPLIST_FILE = mobileUXproject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
