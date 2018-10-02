@@ -24,6 +24,9 @@
 		F3FC8143215EAA0100878CFC /* AccountInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC8142215EAA0100878CFC /* AccountInfo.swift */; };
 		F3FC8145215EABF900878CFC /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC8144215EABF900878CFC /* Course.swift */; };
 		F3FC8147215EADC000878CFC /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC8146215EADC000878CFC /* Client.swift */; };
+		F3FCEA152163CE1A00A29B10 /* AccountHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FCEA142163CE1A00A29B10 /* AccountHeaderTableViewCell.swift */; };
+		F3FCEA172163CE2900A29B10 /* AccountCourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FCEA162163CE2900A29B10 /* AccountCourseTableViewCell.swift */; };
+		F3FCEA192163CE4100A29B10 /* AccountPreferenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FCEA182163CE4100A29B10 /* AccountPreferenceTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,9 @@
 		F3FC8142215EAA0100878CFC /* AccountInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfo.swift; sourceTree = "<group>"; };
 		F3FC8144215EABF900878CFC /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		F3FC8146215EADC000878CFC /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		F3FCEA142163CE1A00A29B10 /* AccountHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		F3FCEA162163CE2900A29B10 /* AccountCourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCourseTableViewCell.swift; sourceTree = "<group>"; };
+		F3FCEA182163CE4100A29B10 /* AccountPreferenceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPreferenceTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +169,9 @@
 				F3DE2534215841D30097B8DE /* Main.storyboard */,
 				F3DE2539215841D40097B8DE /* LaunchScreen.storyboard */,
 				F3CD23D8216080AC00353EFB /* SessionCollectionViewCell.swift */,
+				F3FCEA142163CE1A00A29B10 /* AccountHeaderTableViewCell.swift */,
+				F3FCEA162163CE2900A29B10 /* AccountCourseTableViewCell.swift */,
+				F3FCEA182163CE4100A29B10 /* AccountPreferenceTableViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -320,8 +329,11 @@
 			files = (
 				F3CD23D9216080AC00353EFB /* SessionCollectionViewCell.swift in Sources */,
 				F38DC6AE215D91A60055C345 /* Extensions.swift in Sources */,
+				F3FCEA152163CE1A00A29B10 /* AccountHeaderTableViewCell.swift in Sources */,
 				F3FC8145215EABF900878CFC /* Course.swift in Sources */,
+				F3FCEA172163CE2900A29B10 /* AccountCourseTableViewCell.swift in Sources */,
 				F3CD23E12160942200353EFB /* SessionViewController.swift in Sources */,
+				F3FCEA192163CE4100A29B10 /* AccountPreferenceTableViewCell.swift in Sources */,
 				F38DC6AC215D8B220055C345 /* SessionsTableViewCell.swift in Sources */,
 				F3DE2531215841D30097B8DE /* AppDelegate.swift in Sources */,
 				F38DC6AA215D8A740055C345 /* SessionsTableViewController.swift in Sources */,

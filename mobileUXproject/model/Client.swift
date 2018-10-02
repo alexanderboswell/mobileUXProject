@@ -8,6 +8,7 @@
 
 class Client {
 
+	static var signedInAccount: AccountInfo?
 	
 	static func getSessionsByWeek(callback: @escaping ([(String, [StudySession])]?) -> Void) {
 		callback([

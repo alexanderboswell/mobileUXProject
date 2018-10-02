@@ -20,10 +20,13 @@ class SessionsTableViewController: UITableViewController {
     }
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if let controller = segue.destination as? SessionViewController {
+		if let vc = segue.destination as? SessionViewController,
+		   let session = sender as? StudySession {
 			slideInTransitioningDelegate.direction = .bottom
-			controller.transitioningDelegate = slideInTransitioningDelegate
-			controller.modalPresentationStyle = .custom
+			vc.transitioningDelegate = slideInTransitioningDelegate
+			vc.modalPresentationStyle = .custom
+			
+			vc.session = session
 		}
 	}
 	
@@ -88,7 +91,17 @@ extension SessionsTableViewController: UICollectionViewDelegate, UICollectionVie
 		cell.maybeLabel.text = "\(session.numberMaybe)"
 		cell.canceledLabel.text = "\(session.numberCanceled)"
 		
+		cell.configureShadowAndBorder()
+		
 		return cell
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? SessionCollectionViewCell else {
+			return
+		}
+		
+		cell.configureShadowAndBorder()
 	}
 
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -96,7 +109,7 @@ extension SessionsTableViewController: UICollectionViewDelegate, UICollectionVie
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		performSegue(withIdentifier: "showSession", sender: nil)
+		performSegue(withIdentifier: "showSession", sender: sessionsByWeek[collectionView.tag].1[indexPath.row])
 	}
 }
 
