@@ -9,6 +9,7 @@
 import UIKit
 
 public let LOGIN_NOTIFICATION = NSNotification.Name("LoggedIn")
+public let LOGOUT_NOTIFICATION = NSNotification.Name("LoggedOut")
 
 class SessionsTableViewController: UITableViewController {
 	
@@ -20,6 +21,7 @@ class SessionsTableViewController: UITableViewController {
         super.viewDidLoad()
 		loadSessions()
 		NotificationCenter.default.addObserver(self, selector: #selector(loadSessions), name: LOGIN_NOTIFICATION, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(clearSessions), name: LOGOUT_NOTIFICATION, object: nil)
     }
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -77,6 +79,11 @@ class SessionsTableViewController: UITableViewController {
 				
 			}
 		}
+	}
+	
+	@objc private func  clearSessions() {
+		sessionsByWeek = []
+		self.tableView.reloadData()
 	}
 
 }

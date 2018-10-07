@@ -48,6 +48,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 	@IBAction func logout(_ sender: UIButton) {
 		Client.logout()
 		configureViewWithoutAccount()
+		NotificationCenter.default.post(name: LOGOUT_NOTIFICATION, object: nil)
 	}
 	
 	@objc func firstAccountTap(_ sender: UITapGestureRecognizer) {
@@ -92,14 +93,12 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 			
 		} else if let course = rows[rowIndex] as? Course, let cell = tableView.dequeueReusableCell(withIdentifier: "CourseCell", for: indexPath) as? AccountCourseTableViewCell {
 			
-			cell.courseLabel.text = course.title
-			cell.sectionInfoLabel.text = "Section \(course.section), \(course.professor)"
+			cell.course = course
 			return cell
 			
 		} else if let preference = rows[rowIndex] as? StudyPreference, let cell = tableView.dequeueReusableCell(withIdentifier: "PreferenceCell", for: indexPath) as? AccountPreferenceTableViewCell {
 			
-			cell.preferenceLabel.text = preference.description
-			cell.preferenceSwitch.isOn = preference.checked
+			cell.preference = preference
 			return cell
 			
 		} else {
@@ -139,6 +138,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 	}
 	
 	private func loadData(account: Account) {
+		
 		rows = []
 		rows.append("Enrolled Courses")
 		for course in account.courses {
@@ -149,7 +149,12 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 		for preference in account.studyPreferences {
 			rows.append(preference)
 		}
-		
 		tableView.reloadData()
+//		UIView.transition(with: tableView, duration: 1.0, options: .transitionCrossDissolve, animations:
+//			{
+//				self.tableView.alpha = 1.0
+//
+//			}, completion: nil)
+//		tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
 	}
 }

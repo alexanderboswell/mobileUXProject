@@ -14,10 +14,20 @@ class AccountCourseTableViewCell: UITableViewCell {
 	@IBOutlet weak var sectionInfoLabel: UILabel!
 	@IBOutlet weak var infoView: UIView!
 	
+	var course: Course? {
+		didSet {
+			if let course = course {
+				courseLabel.text = course.title
+				sectionInfoLabel.text = "Section \(course.section), \(course.professor)"
+			}
+		}
+	}
+	
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		configureShadowAndBorder()
 	}
+	
 	
 	func configureShadowAndBorder() {
 		self.infoView.layer.cornerRadius = 10.0
