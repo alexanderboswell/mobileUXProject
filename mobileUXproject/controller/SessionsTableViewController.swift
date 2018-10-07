@@ -8,6 +8,8 @@
 
 import UIKit
 
+public let LOGIN_NOTIFICATION = NSNotification.Name("LoggedIn")
+
 class SessionsTableViewController: UITableViewController {
 	
 	lazy var slideInTransitioningDelegate = SlideInPresentationManager()
@@ -17,6 +19,7 @@ class SessionsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		loadSessions()
+		NotificationCenter.default.addObserver(self, selector: #selector(loadSessions), name: LOGIN_NOTIFICATION, object: nil)
     }
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -65,7 +68,7 @@ class SessionsTableViewController: UITableViewController {
 	
 	//MARK: Private Methods
 	
-	private func loadSessions() {
+	@objc private func loadSessions() {
 		Client.getSessionsByWeek { (response) in
 			if let sessionsByWeek = response {
 				self.sessionsByWeek = sessionsByWeek
@@ -75,6 +78,7 @@ class SessionsTableViewController: UITableViewController {
 			}
 		}
 	}
+
 }
 extension SessionsTableViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -90,8 +94,6 @@ extension SessionsTableViewController: UICollectionViewDelegate, UICollectionVie
 		cell.confirmedLabel.text = "\(session.numberConfirmed)"
 		cell.maybeLabel.text = "\(session.numberMaybe)"
 		cell.canceledLabel.text = "\(session.numberCanceled)"
-		
-		cell.configureShadowAndBorder()
 		
 		return cell
 	}

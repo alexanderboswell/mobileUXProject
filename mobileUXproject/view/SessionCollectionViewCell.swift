@@ -17,10 +17,15 @@ class SessionCollectionViewCell: UICollectionViewCell {
 	@IBOutlet weak var maybeLabel: UILabel!
 	@IBOutlet weak var canceledLabel: UILabel!
 	
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		configureShadowAndBorder()
+	}
+	
 	func configureShadowAndBorder() {
 		self.contentView.layer.cornerRadius = 10.0
 		self.contentView.layer.borderWidth = 1.5
-		self.contentView.layer.borderColor = UIColor(red: 84.0/255, green: 116.0/255, blue: 1.0, alpha: 1.0).cgColor
+		self.contentView.layer.borderColor = UIColor.accentColor.cgColor
 		self.contentView.layer.masksToBounds = true
 		
 		self.layer.shadowColor = UIColor.black.cgColor

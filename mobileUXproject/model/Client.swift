@@ -8,7 +8,20 @@
 
 class Client {
 
-	static var signedInAccount: AccountInfo?
+	static var signedInAccount: Account?
+	
+	static let accounts = [
+		Account(name: "User 1", courses: [
+			Course(title: "MATH 334", professor: "Professor Webb", section: 4),
+			Course(title: "CS 356", professor: "Professor Jones", section: 1),
+			Course(title: "CS 455", professor: "Professor Egbert", section: 2)
+			]),
+		Account(name: "User 2", courses: [
+			Course(title: "ASL 235", professor: "Professor Smith", section: 2),
+			Course(title: "ENGL 220", professor: "Professor Gonzalez", section: 4),
+			Course(title: "PHIL 202", professor: "Professor Rockwood", section: 6)
+			])
+	]
 	
 	static func getSessionsByWeek(callback: @escaping ([(String, [StudySession])]?) -> Void) {
 		callback([
@@ -27,5 +40,11 @@ class Client {
 		])
 	}
 	
+	static func login(accountNumber: Int) {
+			Client.signedInAccount = Client.accounts[accountNumber]
+	}
 	
+	static func logout() {
+		Client.signedInAccount = nil
+	}
 }

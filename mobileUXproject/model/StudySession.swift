@@ -21,8 +21,11 @@ class StudySession: NSObject, MKAnnotation {
 	var roomNumber: String
 	var building: String
 	var numberConfirmed: Int
+	var comfirmedStudents = [String]()
 	var numberMaybe: Int
+	var maybeStudents = [String]()
 	var numberCanceled: Int
+	var canceledStudents = [String]()
 	var latitude: Double
 	var longitude: Double
 	

@@ -26,11 +26,14 @@ class SessionViewController: UIViewController {
 		courseTitleLabel.text = session.courseTitle
 		dateLabel.text = session.date
 		locationLabel.text = "\(session.roomNumber) \(session.building)"
-		confirmedMembersLabel.text = "\(session.numberConfirmed)"
-		maybeMembersLabel.text = "\(session.numberMaybe)"
-		canceledMembersLabel.text = "\(session.numberCanceled)"
+		confirmedMembersLabel.text = session.comfirmedStudents.joined(separator: ", ")
+		maybeMembersLabel.text = session.maybeStudents.joined(separator: ", ")
+		canceledMembersLabel.text = session.canceledStudents.joined(separator: ", ")
 	}
 	
 	@IBAction func response(_ sender: UIButton) {
+	}
+	@IBAction func close(_ sender: Any) {
+		self.dismiss(animated: true, completion: nil)
 	}
 }
