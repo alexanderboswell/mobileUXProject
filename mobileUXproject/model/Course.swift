@@ -9,13 +9,20 @@
 import UIKit
 
 class Course {
-
-	var title: String
+	
+	var title: String {
+		get {
+			return "\(courseAbbr) \(courseNumber)"
+		}
+	}
 	var professor: String
+	var courseAbbr: String
+	var courseNumber: Int
 	var section: Int
 	
-	init(title: String, professor: String, section: Int) {
-		self.title = title
+	init(courseAbbr: String, courseNumber: Int, professor: String, section: Int) {
+		self.courseAbbr = courseAbbr
+		self.courseNumber = courseNumber
 		self.professor = professor
 		self.section = section
 	}

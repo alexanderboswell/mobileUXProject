@@ -11,4 +11,5 @@ import UIKit
 class AccountHeaderTableViewCell: UITableViewCell {
 
 	@IBOutlet weak var titleLabel: UILabel!
+	@IBOutlet weak var button: UIButton!
 }

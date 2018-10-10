@@ -8,25 +8,26 @@
 
 import UIKit
 
-enum PresentationDirection {
-	case left
-	case top
-	case right
-	case bottom
+enum PresentationAmount {
+	case Ratio2_6
+	case Ratio3_6
+	case Ratio4_6
+	case Ratio5_6
 }
 
 class SlideInPresentationManager: NSObject {
 	
-	var direction = PresentationDirection.bottom
+	var screenAmount = PresentationAmount.Ratio5_6
 	
 }
+
 extension SlideInPresentationManager: UIViewControllerTransitioningDelegate {
 	func presentationController(forPresented presented: UIViewController,
 								presenting: UIViewController?,
 								source: UIViewController) -> UIPresentationController? {
 		let presentationController = SlideInPresentationController(presentedViewController: presented,
 																   presenting: presenting,
-																   direction: direction)
+																   amount: screenAmount)
 		return presentationController
 	}
 }

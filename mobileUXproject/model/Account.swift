@@ -34,4 +34,16 @@ class Account {
 		]
 	}
 	
+	func remove(course: Course) {
+	
+		courses.removeAll { (tempCourse) -> Bool in
+			if tempCourse.title == course.title, tempCourse.professor == course.professor,
+				tempCourse.section == course.section {
+				return true
+			} else {
+				return false
+			}
+		}
+	}
+	
 }

@@ -20,8 +20,12 @@
 		F3DE253B215841D40097B8DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3DE2539215841D40097B8DE /* LaunchScreen.storyboard */; };
 		F3DE2546215841D40097B8DE /* mobileUXprojectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DE2545215841D40097B8DE /* mobileUXprojectTests.swift */; };
 		F3DE2551215841D40097B8DE /* mobileUXprojectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DE2550215841D40097B8DE /* mobileUXprojectUITests.swift */; };
+		F3E5ED80216C565700B0FBEA /* CourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E5ED7F216C565700B0FBEA /* CourseViewController.swift */; };
 		F3EECC0B216463C600A5590E /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EECC0A216463C600A5590E /* AccountViewController.swift */; };
 		F3EECC0D2164652700A5590E /* StudyPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EECC0C2164652700A5590E /* StudyPreference.swift */; };
+		F3EF2599216D20B6002BB238 /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EF2598216D20B6002BB238 /* AddCourseViewController.swift */; };
+		F3EF259B216D6B6E002BB238 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EF259A216D6B6E002BB238 /* ActionButton.swift */; };
+		F3EF259D216D8824002BB238 /* StudentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EF259C216D8824002BB238 /* StudentsTableViewController.swift */; };
 		F3FC8141215EA8A300878CFC /* StudySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC8140215EA8A300878CFC /* StudySession.swift */; };
 		F3FC8143215EAA0100878CFC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC8142215EAA0100878CFC /* Account.swift */; };
 		F3FC8145215EABF900878CFC /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC8144215EABF900878CFC /* Course.swift */; };
@@ -68,8 +72,12 @@
 		F3DE254C215841D40097B8DE /* mobileUXprojectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mobileUXprojectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3DE2550215841D40097B8DE /* mobileUXprojectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mobileUXprojectUITests.swift; sourceTree = "<group>"; };
 		F3DE2552215841D40097B8DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3E5ED7F216C565700B0FBEA /* CourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseViewController.swift; sourceTree = "<group>"; };
 		F3EECC0A216463C600A5590E /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		F3EECC0C2164652700A5590E /* StudyPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyPreference.swift; sourceTree = "<group>"; };
+		F3EF2598216D20B6002BB238 /* AddCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
+		F3EF259A216D6B6E002BB238 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		F3EF259C216D8824002BB238 /* StudentsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsTableViewController.swift; sourceTree = "<group>"; };
 		F3FC8140215EA8A300878CFC /* StudySession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySession.swift; sourceTree = "<group>"; };
 		F3FC8142215EAA0100878CFC /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		F3FC8144215EABF900878CFC /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
@@ -109,7 +117,6 @@
 			children = (
 				F3CD23E32160959800353EFB /* SlideInPresentationManager.swift */,
 				F3CD23E5216095E600353EFB /* SlideInPresentationController.swift */,
-				F3EECC0A216463C600A5590E /* AccountViewController.swift */,
 			);
 			path = Presentaion;
 			sourceTree = "<group>";
@@ -177,6 +184,7 @@
 				F3FCEA142163CE1A00A29B10 /* AccountHeaderTableViewCell.swift */,
 				F3FCEA162163CE2900A29B10 /* AccountCourseTableViewCell.swift */,
 				F3FCEA182163CE4100A29B10 /* AccountPreferenceTableViewCell.swift */,
+				F3EF259A216D6B6E002BB238 /* ActionButton.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -196,8 +204,12 @@
 		F3FC813F215EA86900878CFC /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				F3EECC0A216463C600A5590E /* AccountViewController.swift */,
+				F3E5ED7F216C565700B0FBEA /* CourseViewController.swift */,
 				F38DC6A9215D8A740055C345 /* SessionsTableViewController.swift */,
+				F3EF2598216D20B6002BB238 /* AddCourseViewController.swift */,
 				F3CD23E02160942200353EFB /* SessionViewController.swift */,
+				F3EF259C216D8824002BB238 /* StudentsTableViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -341,15 +353,19 @@
 				F3FCEA172163CE2900A29B10 /* AccountCourseTableViewCell.swift in Sources */,
 				F3CD23E12160942200353EFB /* SessionViewController.swift in Sources */,
 				F3FCEA192163CE4100A29B10 /* AccountPreferenceTableViewCell.swift in Sources */,
+				F3EF2599216D20B6002BB238 /* AddCourseViewController.swift in Sources */,
 				F38DC6AC215D8B220055C345 /* SessionsTableViewCell.swift in Sources */,
 				F3DE2531215841D30097B8DE /* AppDelegate.swift in Sources */,
 				F38DC6AA215D8A740055C345 /* SessionsTableViewController.swift in Sources */,
+				F3EF259D216D8824002BB238 /* StudentsTableViewController.swift in Sources */,
+				F3E5ED80216C565700B0FBEA /* CourseViewController.swift in Sources */,
 				F3FC8141215EA8A300878CFC /* StudySession.swift in Sources */,
 				F3EECC0D2164652700A5590E /* StudyPreference.swift in Sources */,
 				F3CD23E42160959800353EFB /* SlideInPresentationManager.swift in Sources */,
 				F3FC8147215EADC000878CFC /* Client.swift in Sources */,
 				F3CD23E6216095E600353EFB /* SlideInPresentationController.swift in Sources */,
 				F3FC8143215EAA0100878CFC /* Account.swift in Sources */,
+				F3EF259B216D6B6E002BB238 /* ActionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

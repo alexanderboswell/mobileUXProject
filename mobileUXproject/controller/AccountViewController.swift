@@ -15,6 +15,8 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 	@IBOutlet private weak var firstAccountLabel: UILabel!
 	@IBOutlet private weak var secondAccountLabel: UILabel!
 	@IBOutlet private weak var loginButton: UIButton!
+	@IBOutlet private weak var firstAccountView: UIView!
+	@IBOutlet private weak var secondAccountView: UIView!
 	
 	//MARK: Account outlets
 	@IBOutlet private weak var tableView: UITableView!
@@ -24,7 +26,12 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 	//MARK: Private variables
 	private var selectedAccount: Int?
 	private var rows = [Any]()
+	private var presentedCourseIndex: IndexPath?
 	
+	//MARK: Public variables
+	lazy var slideInTransitioningDelegate = SlideInPresentationManager()
+	
+	//MARK: Viewcontroller lifecycle
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -34,6 +41,24 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 			configureViewWithAccount()
 		} else {
 			configureViewWithoutAccount()
+		}
+	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if let vc = segue.destination as? CourseViewController,
+			let course = sender as? Course {
+			
+			slideInTransitioningDelegate.screenAmount = .Ratio3_6
+			vc.transitioningDelegate = slideInTransitioningDelegate
+			vc.modalPresentationStyle = .custom
+			
+			vc.course = course
+		} else if let vc = segue.destination as? AddCourseViewController {
+			
+			slideInTransitioningDelegate.screenAmount = .Ratio3_6
+			vc.transitioningDelegate = slideInTransitioningDelegate
+			vc.modalPresentationStyle = .custom
+			
 		}
 	}
 	
@@ -51,18 +76,28 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 		NotificationCenter.default.post(name: LOGOUT_NOTIFICATION, object: nil)
 	}
 	
+	@IBAction func removeCourse(segue: UIStoryboardSegue) {
+		if let indexPath = presentedCourseIndex,
+			let course = rows[indexPath.row] as? Course {
+			rows.remove(at: indexPath.row)
+			tableView.deleteRows(at: [indexPath], with: .fade)
+			presentedCourseIndex = nil
+			Client.signedInAccount?.remove(course: course)
+		}
+	}
+	
 	@objc func firstAccountTap(_ sender: UITapGestureRecognizer) {
 		loginButton.isEnabled = true
-		firstAccountLabel.textColor = UIColor.accentColor
-		secondAccountLabel.textColor = UIColor.black
 		selectedAccount = 0
+		addBorder(view: firstAccountView)
+		removeBorder(view: secondAccountView)
 	}
 
 	@objc func secondAccountTap(_ sender: UITapGestureRecognizer) {
 		loginButton.isEnabled = true
-		firstAccountLabel.textColor = UIColor.black
-		secondAccountLabel.textColor = UIColor.accentColor
 		selectedAccount = 1
+		addBorder(view: secondAccountView)
+		removeBorder(view: firstAccountView)
 	}
 	
 	//MARK: UITableViewDataSource and UITableViewDelegate
@@ -88,16 +123,24 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 		let rowIndex = indexPath.row
 		if let sectionTitle = rows[rowIndex] as? String, let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell", for: indexPath) as? AccountHeaderTableViewCell {
 			
+			cell.selectionStyle = .none
 			cell.titleLabel.text = sectionTitle
+			if sectionTitle == "Enrolled Courses" {
+				cell.button.isHidden = false
+			} else  {
+				cell.button.isHidden = true
+			}
 			return cell
 			
 		} else if let course = rows[rowIndex] as? Course, let cell = tableView.dequeueReusableCell(withIdentifier: "CourseCell", for: indexPath) as? AccountCourseTableViewCell {
 			
+			cell.selectionStyle = .none
 			cell.course = course
 			return cell
 			
 		} else if let preference = rows[rowIndex] as? StudyPreference, let cell = tableView.dequeueReusableCell(withIdentifier: "PreferenceCell", for: indexPath) as? AccountPreferenceTableViewCell {
 			
+			cell.selectionStyle = .none
 			cell.preference = preference
 			return cell
 			
@@ -106,17 +149,24 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 		}
 	}
 	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		if let course = rows[indexPath.row] as? Course {
+			performSegue(withIdentifier: "showCourse", sender: course)
+			presentedCourseIndex = indexPath
+		}
+	}
+	
 	//MARK: Private methods
 	
 	private func setupTapGestures() {
 		let firstAccountTap = UITapGestureRecognizer(target: self, action: #selector(self.firstAccountTap(_:)))
 		
-		firstAccountLabel.addGestureRecognizer(firstAccountTap)
+		firstAccountView.addGestureRecognizer(firstAccountTap)
 		firstAccountLabel.isUserInteractionEnabled = true
 		
 		let secondAccountTap = UITapGestureRecognizer(target: self, action: #selector(self.secondAccountTap(_:)))
 		
-		secondAccountLabel.addGestureRecognizer(secondAccountTap)
+		secondAccountView.addGestureRecognizer(secondAccountTap)
 		secondAccountLabel.isUserInteractionEnabled = true
 	}
 	
@@ -135,6 +185,22 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 		firstAccountLabel.textColor = UIColor.black
 		secondAccountLabel.textColor = UIColor.black
 		loginButton.isEnabled = false
+		removeBorder(view: firstAccountView)
+		removeBorder(view: secondAccountView)
+	}
+	
+	private func addBorder(view: UIView) {
+		view.layer.cornerRadius = 10.0
+		view.layer.borderWidth = 1.5
+		view.layer.borderColor = UIColor.accentColor.cgColor
+		view.layer.masksToBounds = true
+	}
+	
+	private func removeBorder(view: UIView) {
+		view.layer.cornerRadius = 10.0
+		view.layer.borderWidth = 1.5
+		view.layer.borderColor = UIColor.clear.cgColor
+		view.layer.masksToBounds = true
 	}
 	
 	private func loadData(account: Account) {
@@ -150,11 +216,5 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 			rows.append(preference)
 		}
 		tableView.reloadData()
-//		UIView.transition(with: tableView, duration: 1.0, options: .transitionCrossDissolve, animations:
-//			{
-//				self.tableView.alpha = 1.0
-//
-//			}, completion: nil)
-//		tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
 	}
 }

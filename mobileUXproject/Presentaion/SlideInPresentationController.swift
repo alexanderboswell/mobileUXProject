@@ -12,7 +12,7 @@ class SlideInPresentationController: UIPresentationController {
 	//1
 	// MARK: - Properties
 	fileprivate var dimmingView: UIView!
-	private var direction: PresentationDirection
+	private var amount: PresentationAmount
 	
 	
 	override var frameOfPresentedViewInContainerView: CGRect {
@@ -22,23 +22,25 @@ class SlideInPresentationController: UIPresentationController {
 		frame.size = size(forChildContentContainer: presentedViewController,
 						  withParentContainerSize: containerView!.bounds.size)
 		
-		//2
-		switch direction {
-		case .right:
-			frame.origin.x = containerView!.frame.width*(1.0/3.0)
-		case .bottom:
-			frame.origin.y = containerView!.frame.height*(1.0/6.0)
-		default:
-			frame.origin = .zero
+		switch amount {
+			case .Ratio2_6:
+				frame.origin.y = containerView!.frame.height*(4.0/6.0)
+			case .Ratio3_6:
+				frame.origin.y = containerView!.frame.height*(3.0/6.0)
+			case .Ratio4_6:
+				frame.origin.y = containerView!.frame.height*(2.0/6.0)
+			case .Ratio5_6:
+				frame.origin.y = containerView!.frame.height*(1.0/6.0)
 		}
+		
 		return frame
 	}
 	
 	//2
 	init(presentedViewController: UIViewController,
 		 presenting presentingViewController: UIViewController?,
-		 direction: PresentationDirection) {
-		self.direction = direction
+		 amount: PresentationAmount) {
+		self.amount = amount
 		
 		//3
 		super.init(presentedViewController: presentedViewController,
@@ -88,11 +90,15 @@ class SlideInPresentationController: UIPresentationController {
 	
 	override func size(forChildContentContainer container: UIContentContainer,
 					   withParentContainerSize parentSize: CGSize) -> CGSize {
-		switch direction {
-		case .left, .right:
-			return CGSize(width: parentSize.width*(2.0/3.0), height: parentSize.height)
-		case .bottom, .top:
-			return CGSize(width: parentSize.width, height: parentSize.height*(5.0/6.0))
+		switch amount {
+			case .Ratio2_6:
+				return CGSize(width: parentSize.width, height: parentSize.height*(2.0/6.0))
+			case .Ratio3_6:
+				return CGSize(width: parentSize.width, height: parentSize.height*(3.0/6.0))
+			case .Ratio4_6:
+				return CGSize(width: parentSize.width, height: parentSize.height*(4.0/6.0))
+			case .Ratio5_6:
+				return CGSize(width: parentSize.width, height: parentSize.height*(5.0/6.0))
 		}
 	}
 	

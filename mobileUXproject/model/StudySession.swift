@@ -21,11 +21,11 @@ class StudySession: NSObject, MKAnnotation {
 	var roomNumber: String
 	var building: String
 	var numberConfirmed: Int
-	var comfirmedStudents = [String]()
+	var confirmedStudents: [String]
 	var numberMaybe: Int
-	var maybeStudents = [String]()
+	var maybeStudents: [String]
 	var numberCanceled: Int
-	var canceledStudents = [String]()
+	var canceledStudents: [String]
 	var latitude: Double
 	var longitude: Double
 	
@@ -49,7 +49,8 @@ class StudySession: NSObject, MKAnnotation {
 		 roomNumber: String, building: String,
 		 numberConfirmed: Int, numberMaybe: Int,
 		 numberCanceled: Int, latitude: Double,
-		 longitude: Double) {
+		 longitude: Double,  confirmedStudents: [String],
+		 maybeStudents: [String], canceledStudents: [String]) {
 		self.courseTitle = courseTitle
 		self.date = date
 		self.roomNumber = roomNumber
@@ -59,5 +60,8 @@ class StudySession: NSObject, MKAnnotation {
 		self.numberCanceled = numberCanceled
 		self.latitude = latitude
 		self.longitude = longitude
+		self.confirmedStudents = confirmedStudents
+		self.maybeStudents = maybeStudents
+		self.canceledStudents = canceledStudents
 	}
 }

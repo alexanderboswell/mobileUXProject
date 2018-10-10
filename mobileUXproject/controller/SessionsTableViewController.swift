@@ -27,14 +27,14 @@ class SessionsTableViewController: UITableViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if let vc = segue.destination as? SessionViewController,
 		   let session = sender as? StudySession {
-			slideInTransitioningDelegate.direction = .bottom
+			slideInTransitioningDelegate.screenAmount = .Ratio5_6
 			vc.transitioningDelegate = slideInTransitioningDelegate
 			vc.modalPresentationStyle = .custom
 			
+			vc.slideInTransitioningDelegate = slideInTransitioningDelegate
 			vc.session = session
 		}
 	}
-	
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return sessionsByWeek.count
@@ -44,7 +44,6 @@ class SessionsTableViewController: UITableViewController {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? SessionsTableViewCell else {
 			return UITableViewCell()
 		}
-		
 		cell.selectionStyle = .none
 		cell.sessionsLabel.text = sessionsByWeek[indexPath.row].0
 		return cell
@@ -83,6 +82,7 @@ class SessionsTableViewController: UITableViewController {
 	
 	@objc private func  clearSessions() {
 		sessionsByWeek = []
+		storedOffsets = [Int: CGFloat]()
 		self.tableView.reloadData()
 	}
 
