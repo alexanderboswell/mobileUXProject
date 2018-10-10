@@ -11,7 +11,7 @@ import UIKit
 public let LOGIN_NOTIFICATION = NSNotification.Name("LoggedIn")
 public let LOGOUT_NOTIFICATION = NSNotification.Name("LoggedOut")
 
-class SessionsTableViewController: UITableViewController {
+class SessionsTableViewController: UITableViewController, ResponseToSessionProtocol {
 	
 	lazy var slideInTransitioningDelegate = SlideInPresentationManager()
 	private var storedOffsets = [Int: CGFloat]()
@@ -33,6 +33,7 @@ class SessionsTableViewController: UITableViewController {
 			
 			vc.slideInTransitioningDelegate = slideInTransitioningDelegate
 			vc.session = session
+			vc.delegate = self
 		}
 	}
 	
@@ -50,7 +51,7 @@ class SessionsTableViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return 200.0
+		return 184.0
 	}
 	
 	
@@ -65,6 +66,25 @@ class SessionsTableViewController: UITableViewController {
 		guard let tableViewCell = cell as? SessionsTableViewCell else { return }
 		
 		storedOffsets[indexPath.row] = tableViewCell.collectionViewOffset
+	}
+	
+	//MARK: ResponseToSessionProtocol
+	
+	func reloadCell(session: StudySession) {
+		for (i, _) in sessionsByWeek.enumerated() {
+			for (j, tempSession) in sessionsByWeek[i].1.enumerated() {
+				if session == tempSession {
+					if let tableViewCell = tableView.cellForRow(at: IndexPath(row: i, section: 0)) as? SessionsTableViewCell {
+					
+						tableViewCell.collectionView.reloadItems(at: [IndexPath(row: j, section: 0)])
+						if let collectionViewCell = tableViewCell.collectionView.cellForItem(at: IndexPath(row: j, section: 0)) as? SessionCollectionViewCell {
+
+							setReponseimages(session: session, collectionViewCell: collectionViewCell)
+						}
+					}
+				}
+			}
+		}
 	}
 	
 	//MARK: Private Methods
@@ -85,6 +105,27 @@ class SessionsTableViewController: UITableViewController {
 		storedOffsets = [Int: CGFloat]()
 		self.tableView.reloadData()
 	}
+	
+	private func setReponseimages(session: StudySession, collectionViewCell: SessionCollectionViewCell) {
+		switch session.currentResponse {
+		case .confirmed?:
+			collectionViewCell.checkImageView.image = UIImage(named: "check")
+			collectionViewCell.questionImageView.image = UIImage(named: "questionGrey")
+			collectionViewCell.canceledImageView.image = UIImage(named: "xGrey")
+		case .maybe?:
+			collectionViewCell.checkImageView.image = UIImage(named: "checkGrey")
+			collectionViewCell.questionImageView.image = UIImage(named: "question")
+			collectionViewCell.canceledImageView.image = UIImage(named: "xGrey")
+		case .canceled?:
+			collectionViewCell.checkImageView.image = UIImage(named: "checkGrey")
+			collectionViewCell.questionImageView.image = UIImage(named: "questionGrey")
+			collectionViewCell.canceledImageView.image = UIImage(named: "x")
+		default:
+			collectionViewCell.checkImageView.image = UIImage(named: "check")
+			collectionViewCell.questionImageView.image = UIImage(named: "question")
+			collectionViewCell.canceledImageView.image = UIImage(named: "x")
+		}
+	}
 
 }
 extension SessionsTableViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -101,14 +142,13 @@ extension SessionsTableViewController: UICollectionViewDelegate, UICollectionVie
 		cell.confirmedLabel.text = "\(session.numberConfirmed)"
 		cell.maybeLabel.text = "\(session.numberMaybe)"
 		cell.canceledLabel.text = "\(session.numberCanceled)"
+		setReponseimages(session: session, collectionViewCell: cell)
 		
 		return cell
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? SessionCollectionViewCell else {
-			return
-		}
+		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? SessionCollectionViewCell else { return }
 		
 		cell.configureShadowAndBorder()
 	}
@@ -121,4 +161,3 @@ extension SessionsTableViewController: UICollectionViewDelegate, UICollectionVie
 		performSegue(withIdentifier: "showSession", sender: sessionsByWeek[collectionView.tag].1[indexPath.row])
 	}
 }
-

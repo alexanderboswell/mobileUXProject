@@ -9,6 +9,10 @@
 import UIKit
 import MapKit
 
+protocol ResponseToSessionProtocol {
+	func reloadCell(session: StudySession)
+}
+
 class SessionViewController: UIViewController, MKMapViewDelegate {
 
 	//MARK: Outlets
@@ -21,9 +25,16 @@ class SessionViewController: UIViewController, MKMapViewDelegate {
 	@IBOutlet weak var confirmedView: UIView!
 	@IBOutlet weak var maybeView: UIView!
 	@IBOutlet weak var canceledView: UIView!
+	@IBOutlet weak var confirmedLabel: UILabel!
+	@IBOutlet weak var maybeLabel: UILabel!
+	@IBOutlet weak var canceledLabel: UILabel!
+	@IBOutlet weak var confirmedImageView: UIImageView!
+	@IBOutlet weak var maybeImageView: UIImageView!
+	@IBOutlet weak var canceledImageView: UIImageView!
 	
 	var session: StudySession!
 	var slideInTransitioningDelegate: SlideInPresentationManager!
+	var delegate: ResponseToSessionProtocol?
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,15 +56,51 @@ class SessionViewController: UIViewController, MKMapViewDelegate {
 	//MARK: Actions
 	 
 	@IBAction func confirmed(_ sender: Any) {
+		if session.currentResponse == nil || session.currentResponse != .confirmed {
+			session.numberConfirmed += 1
+			
+			if session.currentResponse == .maybe {
+				session.numberMaybe -= 1
+			} else if session.currentResponse == .canceled {
+				session.numberCanceled -= 1
+			}
+			
+			session.currentResponse = .confirmed
+			delegate?.reloadCell(session: session)
+		}
+		dismiss(animated: true, completion: nil)
 		
 	}
 	
 	@IBAction func maybe(_ sender: Any) {
-		
+		if session.currentResponse == nil || session.currentResponse != .maybe {
+			session.numberMaybe += 1
+			
+			if session.currentResponse == .confirmed {
+				session.numberConfirmed -= 1
+			} else if session.currentResponse == .canceled {
+				session.numberCanceled -= 1
+			}
+			
+			session.currentResponse = .maybe
+			delegate?.reloadCell(session: session)
+		}
+		dismiss(animated: true, completion: nil)
 	}
 	
 	@IBAction func canceled(_ sender: Any) {
-		
+		if session.currentResponse == nil || session.currentResponse != .canceled {
+			session.numberCanceled += 1
+			
+			if session.currentResponse == .confirmed {
+				session.numberConfirmed -= 1
+			} else if session.currentResponse == .maybe {
+				session.numberMaybe -= 1
+			}
+			session.currentResponse = .canceled
+			delegate?.reloadCell(session: session)
+		}
+		dismiss(animated: true, completion: nil)
 	}
 	
 	@IBAction func close(_ sender: Any) {
@@ -96,10 +143,12 @@ class SessionViewController: UIViewController, MKMapViewDelegate {
 		courseTitleLabel.text = session.courseTitle
 		dateLabel.text = session.date
 		locationLabel.text = "\(session.roomNumber) \(session.building)"
+		confirmedLabel.text = "\(session.numberConfirmed)"
+		maybeLabel.text = "\(session.numberMaybe)"
+		canceledLabel.text = "\(session.numberCanceled)"
 		
 		let mapTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.mapTap(_:)))
 		mapView.addGestureRecognizer(mapTapRecognizer)
-		
 		centerMapOnLocation(location: CLLocation(latitude: session.latitude, longitude: session.longitude))
 		mapView.addAnnotation(session)
 		
@@ -115,6 +164,19 @@ class SessionViewController: UIViewController, MKMapViewDelegate {
 		configureShadowAndBorder(view: confirmedView)
 		configureShadowAndBorder(view: maybeView)
 		configureShadowAndBorder(view: canceledView)
+		
+		if let response = session.currentResponse {
+			if response == .confirmed {
+				maybeImageView.image = UIImage(named: "questionGrey")
+				canceledImageView.image = UIImage(named: "xGrey")
+			} else if response == .maybe {
+				confirmedImageView.image = UIImage(named: "checkGrey")
+				canceledImageView.image = UIImage(named: "xGrey")
+			} else if response == .canceled {
+				maybeImageView.image = UIImage(named: "questionGrey")
+				confirmedImageView.image = UIImage(named: "checkGrey")
+			}
+		}
 	}
 	
 	private func configureShadowAndBorder(view: UIView) {

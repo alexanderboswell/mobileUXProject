@@ -12,11 +12,6 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 	
 	//MARK: Login outlets
 	@IBOutlet private weak var LoginView: UIView!
-	@IBOutlet private weak var firstAccountLabel: UILabel!
-	@IBOutlet private weak var secondAccountLabel: UILabel!
-	@IBOutlet private weak var loginButton: UIButton!
-	@IBOutlet private weak var firstAccountView: UIView!
-	@IBOutlet private weak var secondAccountView: UIView!
 	
 	//MARK: Account outlets
 	@IBOutlet private weak var tableView: UITableView!
@@ -24,7 +19,6 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 	@IBOutlet private weak var nameLabel: UILabel!
 	
 	//MARK: Private variables
-	private var selectedAccount: Int?
 	private var rows = [Any]()
 	private var presentedCourseIndex: IndexPath?
 	
@@ -34,9 +28,6 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 	//MARK: Viewcontroller lifecycle
 	override func viewDidLoad() {
         super.viewDidLoad()
-		
-		setupTapGestures()
-
 		if Client.signedInAccount != nil {
 			configureViewWithAccount()
 		} else {
@@ -65,7 +56,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 	//MARK: Actions
 
 	@IBAction private func login(_ sender: UIButton) {
-		Client.login(accountNumber: selectedAccount ?? 0)
+		Client.login(accountNumber: sender.tag)
 		configureViewWithAccount()
 		NotificationCenter.default.post(name: LOGIN_NOTIFICATION, object: nil)
 	}
@@ -84,20 +75,6 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 			presentedCourseIndex = nil
 			Client.signedInAccount?.remove(course: course)
 		}
-	}
-	
-	@objc func firstAccountTap(_ sender: UITapGestureRecognizer) {
-		loginButton.isEnabled = true
-		selectedAccount = 0
-		addBorder(view: firstAccountView)
-		removeBorder(view: secondAccountView)
-	}
-
-	@objc func secondAccountTap(_ sender: UITapGestureRecognizer) {
-		loginButton.isEnabled = true
-		selectedAccount = 1
-		addBorder(view: secondAccountView)
-		removeBorder(view: firstAccountView)
 	}
 	
 	//MARK: UITableViewDataSource and UITableViewDelegate
@@ -158,18 +135,6 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 	
 	//MARK: Private methods
 	
-	private func setupTapGestures() {
-		let firstAccountTap = UITapGestureRecognizer(target: self, action: #selector(self.firstAccountTap(_:)))
-		
-		firstAccountView.addGestureRecognizer(firstAccountTap)
-		firstAccountLabel.isUserInteractionEnabled = true
-		
-		let secondAccountTap = UITapGestureRecognizer(target: self, action: #selector(self.secondAccountTap(_:)))
-		
-		secondAccountView.addGestureRecognizer(secondAccountTap)
-		secondAccountLabel.isUserInteractionEnabled = true
-	}
-	
 	private func configureViewWithAccount() {
 		if let account = Client.signedInAccount {
 			LoginView.isHidden = true
@@ -181,26 +146,6 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 	
 	private  func configureViewWithoutAccount() {
 		LoginView.isHidden = false
-		selectedAccount = nil
-		firstAccountLabel.textColor = UIColor.black
-		secondAccountLabel.textColor = UIColor.black
-		loginButton.isEnabled = false
-		removeBorder(view: firstAccountView)
-		removeBorder(view: secondAccountView)
-	}
-	
-	private func addBorder(view: UIView) {
-		view.layer.cornerRadius = 10.0
-		view.layer.borderWidth = 1.5
-		view.layer.borderColor = UIColor.accentColor.cgColor
-		view.layer.masksToBounds = true
-	}
-	
-	private func removeBorder(view: UIView) {
-		view.layer.cornerRadius = 10.0
-		view.layer.borderWidth = 1.5
-		view.layer.borderColor = UIColor.clear.cgColor
-		view.layer.masksToBounds = true
 	}
 	
 	private func loadData(account: Account) {

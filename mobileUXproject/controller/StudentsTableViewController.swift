@@ -10,10 +10,14 @@ import UIKit
 
 class StudentsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	
+	@IBOutlet weak var noneLabel: UILabel!
 	var students: [String]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		if students.count == 0 {
+			noneLabel.isHidden = false
+		}
     }
 	
 	//MARK: Actions

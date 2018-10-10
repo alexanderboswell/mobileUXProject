@@ -21,7 +21,7 @@ class SessionsTableViewCell: UITableViewCell {
 	}
 
 	@IBOutlet weak var sessionsLabel: UILabel!
-	@IBOutlet private weak var collectionView: UICollectionView!
+	@IBOutlet weak var collectionView: UICollectionView!
 	
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -16,6 +16,9 @@ class SessionCollectionViewCell: UICollectionViewCell {
 	@IBOutlet weak var confirmedLabel: UILabel!
 	@IBOutlet weak var maybeLabel: UILabel!
 	@IBOutlet weak var canceledLabel: UILabel!
+	@IBOutlet weak var checkImageView: UIImageView!
+	@IBOutlet weak var questionImageView: UIImageView!
+	@IBOutlet weak var canceledImageView: UIImageView!
 	
 	override func layoutSubviews() {
 		super.layoutSubviews()
