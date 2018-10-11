@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddCourseProtocol {
 	
 	//MARK: Login outlets
 	@IBOutlet private weak var LoginView: UIView!
@@ -33,6 +33,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 		} else {
 			configureViewWithoutAccount()
 		}
+		
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -49,7 +50,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 			slideInTransitioningDelegate.screenAmount = .Ratio3_6
 			vc.transitioningDelegate = slideInTransitioningDelegate
 			vc.modalPresentationStyle = .custom
-			
+			vc.delegate = self
 		}
 	}
 	
@@ -132,6 +133,14 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 			presentedCourseIndex = indexPath
 		}
 	}
+	
+	//MARK: AddCourseProtocol
+	func addCourse(course: Course) {
+		rows.insert(course, at: 1)
+		tableView.insertRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+		Client.signedInAccount?.courses.append(course)
+	}
+	
 	
 	//MARK: Private methods
 	

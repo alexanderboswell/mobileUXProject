@@ -127,18 +127,33 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <state key="disabled" backgroundImage="disabledButtonBackground"/>
+                                <connections>
+                                    <action selector="add:" destination="wc7-JF-jAq" eventType="touchUpInside" id="ggc-ep-2LT"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="0Ce-DV-vSv">
-                                <rect key="frame" x="16" y="60" width="382" height="706"/>
+                                <rect key="frame" x="16" y="106" width="382" height="660"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CHm-38-e0u">
-                                        <rect key="frame" x="31" y="0.0" width="320" height="235.5"/>
+                                        <rect key="frame" x="31" y="0.0" width="320" height="220"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="wc7-JF-jAq" id="7ez-uE-IZs"/>
+                                            <outlet property="delegate" destination="wc7-JF-jAq" id="iLv-4f-G4c"/>
+                                        </connections>
                                     </pickerView>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jS7-7N-yOk">
-                                        <rect key="frame" x="31" y="235.5" width="320" height="235"/>
+                                        <rect key="frame" x="31" y="220" width="320" height="220"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="wc7-JF-jAq" id="BKN-FV-ahs"/>
+                                            <outlet property="delegate" destination="wc7-JF-jAq" id="hee-Hj-CZn"/>
+                                        </connections>
                                     </pickerView>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ky-vH-XrD">
-                                        <rect key="frame" x="31" y="470.5" width="320" height="235.5"/>
+                                        <rect key="frame" x="31" y="440" width="320" height="220"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="wc7-JF-jAq" id="2uq-Ma-QbQ"/>
+                                            <outlet property="delegate" destination="wc7-JF-jAq" id="rwi-WK-rzw"/>
+                                        </connections>
                                     </pickerView>
                                 </subviews>
                             </stackView>
@@ -148,7 +163,7 @@
                                     <constraint firstAttribute="width" constant="30" id="UCO-u6-iwv"/>
                                     <constraint firstAttribute="height" constant="30" id="mF2-9E-1aj"/>
                                 </constraints>
-                                <state key="normal" image="cancel"/>
+                                <state key="normal" image="arrowDown"/>
                                 <connections>
                                     <action selector="cancel:" destination="wc7-JF-jAq" eventType="touchUpInside" id="nwU-Bi-La5"/>
                                 </connections>
@@ -159,9 +174,9 @@
                             <constraint firstItem="PtR-ds-e1F" firstAttribute="trailing" secondItem="Oyl-5J-a6t" secondAttribute="trailing" constant="16" id="G3u-g0-3G7"/>
                             <constraint firstItem="0Ce-DV-vSv" firstAttribute="leading" secondItem="PtR-ds-e1F" secondAttribute="leading" constant="16" id="QFi-eR-ddj"/>
                             <constraint firstItem="dOU-AI-EsM" firstAttribute="leading" secondItem="PtR-ds-e1F" secondAttribute="leading" constant="16" id="SzX-ZR-L5v"/>
+                            <constraint firstItem="0Ce-DV-vSv" firstAttribute="top" secondItem="Oyl-5J-a6t" secondAttribute="bottom" constant="16" id="XBC-PZ-S8T"/>
                             <constraint firstItem="PtR-ds-e1F" firstAttribute="bottom" secondItem="dOU-AI-EsM" secondAttribute="bottom" constant="32" id="ZBK-Xa-xbm"/>
                             <constraint firstItem="PtR-ds-e1F" firstAttribute="trailing" secondItem="0Ce-DV-vSv" secondAttribute="trailing" constant="16" id="iti-V2-964"/>
-                            <constraint firstItem="0Ce-DV-vSv" firstAttribute="top" secondItem="PtR-ds-e1F" secondAttribute="top" constant="16" id="ixX-0x-9Q1"/>
                             <constraint firstItem="PtR-ds-e1F" firstAttribute="trailing" secondItem="dOU-AI-EsM" secondAttribute="trailing" constant="16" id="mAs-iO-GfE"/>
                             <constraint firstItem="Oyl-5J-a6t" firstAttribute="top" secondItem="PtR-ds-e1F" secondAttribute="top" constant="16" id="x49-28-DWS"/>
                             <constraint firstItem="dOU-AI-EsM" firstAttribute="top" secondItem="0Ce-DV-vSv" secondAttribute="bottom" constant="16" id="zHL-Bb-YIW"/>
@@ -169,6 +184,7 @@
                         <viewLayoutGuide key="safeArea" id="PtR-ds-e1F"/>
                     </view>
                     <connections>
+                        <outlet property="addButton" destination="dOU-AI-EsM" id="GCD-w9-Iec"/>
                         <outlet property="courseAbbrPickerView" destination="CHm-38-e0u" id="82B-Zk-pfy"/>
                         <outlet property="courseNumberPickerView" destination="jS7-7N-yOk" id="ded-Tc-H7T"/>
                         <outlet property="sectionPickerView" destination="9ky-vH-XrD" id="1U7-qK-1fG"/>
@@ -528,10 +544,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csh-36-fYk">
-                                <rect key="frame" x="0.0" y="190" width="414" height="150"/>
+                                <rect key="frame" x="0.0" y="190" width="414" height="225"/>
                                 <subviews>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="mutedStandard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" showsCompass="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cg2-S5-h7c">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="225"/>
                                         <connections>
                                             <outlet property="delegate" destination="JBL-1Z-Xwe" id="lFC-Nw-Vmn"/>
                                         </connections>
@@ -540,7 +556,7 @@
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="5sK-am-jza"/>
+                                    <constraint firstAttribute="height" constant="225" id="5sK-am-jza"/>
                                     <constraint firstItem="Cg2-S5-h7c" firstAttribute="leading" secondItem="csh-36-fYk" secondAttribute="leading" id="MSy-4g-4uo"/>
                                     <constraint firstAttribute="trailing" secondItem="Cg2-S5-h7c" secondAttribute="trailing" id="fc4-Ui-GwT"/>
                                     <constraint firstAttribute="bottom" secondItem="Cg2-S5-h7c" secondAttribute="bottom" id="ht6-up-R7a"/>
@@ -548,7 +564,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="loc-HV-9WE">
-                                <rect key="frame" x="16" y="356" width="382" height="58"/>
+                                <rect key="frame" x="16" y="431" width="382" height="58"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cRC-lX-N6s">
                                         <rect key="frame" x="0.0" y="0.0" width="116.5" height="58"/>
@@ -689,7 +705,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.97646147012710571" green="0.97646445035934448" blue="0.97647100687026978" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="csh-36-fYk" firstAttribute="top" secondItem="dRx-Lu-LI7" secondAttribute="bottom" constant="16" id="LN7-qT-9Wj"/>
@@ -1049,7 +1065,6 @@
         <image name="arrowDown" width="203.29411315917969" height="203.29411315917969"/>
         <image name="arrowRight" width="203.29411315917969" height="203.29411315917969"/>
         <image name="calendar" width="45" height="45"/>
-        <image name="cancel" width="75" height="75"/>
         <image name="check" width="66" height="66"/>
         <image name="disabledButtonBackground" width="28" height="37"/>
         <image name="person" width="45" height="45"/>

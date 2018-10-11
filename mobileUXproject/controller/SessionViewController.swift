@@ -152,18 +152,18 @@ class SessionViewController: UIViewController, MKMapViewDelegate {
 		centerMapOnLocation(location: CLLocation(latitude: session.latitude, longitude: session.longitude))
 		mapView.addAnnotation(session)
 		
-		let confirmedStudentsRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.confirmedStudentsTap(_:)))
-		confirmedView.addGestureRecognizer(confirmedStudentsRecognizer)
-		
-		let maybeStudentsRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.maybeStudentsTap(_:)))
-		maybeView.addGestureRecognizer(maybeStudentsRecognizer)
-		
-		let canceledStudentsRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.canceledStudentsTap(_:)))
-		canceledView.addGestureRecognizer(canceledStudentsRecognizer)
-		
-		configureShadowAndBorder(view: confirmedView)
-		configureShadowAndBorder(view: maybeView)
-		configureShadowAndBorder(view: canceledView)
+//		let confirmedStudentsRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.confirmedStudentsTap(_:)))
+//		confirmedView.addGestureRecognizer(confirmedStudentsRecognizer)
+//		
+//		let maybeStudentsRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.maybeStudentsTap(_:)))
+//		maybeView.addGestureRecognizer(maybeStudentsRecognizer)
+//		
+//		let canceledStudentsRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.canceledStudentsTap(_:)))
+//		canceledView.addGestureRecognizer(canceledStudentsRecognizer)
+//		
+//		configureShadowAndBorder(view: confirmedView)
+//		configureShadowAndBorder(view: maybeView)
+//		configureShadowAndBorder(view: canceledView)
 		
 		if let response = session.currentResponse {
 			if response == .confirmed {

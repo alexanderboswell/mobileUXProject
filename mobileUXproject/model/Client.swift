@@ -96,12 +96,21 @@ class Client {
 			[ "MATH": [ 334: [
 				("Professor Webb", 4),
 				("Professor Webb", 3)
+				],
+						314: [
+				("Professor Martin", 1),
+				("Professor Martin", 2)
 				]
 			],
 			  "ASL": [ 235: [
 			    ("Professor Smith", 3),
 			    ("Professor Smith", 2)
-			    ]
+			    ],
+					   150: [
+				("Professor Rockwell", 5),
+				("Professor Rockwell", 4)
+				]
+
 			]
 		]
 		if let courses = Client.signedInAccount?.courses {
