@@ -27,7 +27,7 @@ class SessionCollectionViewCell: UICollectionViewCell {
 	
 	func configureShadowAndBorder() {
 		self.contentView.layer.cornerRadius = 10.0
-		self.contentView.layer.borderWidth = 1.0
+		self.contentView.layer.borderWidth = 0.8
 		self.contentView.layer.borderColor = UIColor.accentColor.cgColor
 		self.contentView.layer.masksToBounds = true
 		

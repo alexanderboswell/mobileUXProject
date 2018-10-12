@@ -31,6 +31,8 @@ class AccountCourseTableViewCell: UITableViewCell {
 	
 	func configureShadowAndBorder() {
 		self.infoView.layer.cornerRadius = 10.0
+		self.infoView.layer.borderWidth = 0.8
+		self.infoView.layer.borderColor = UIColor.accentColor.cgColor
 		
 		self.infoView.layer.shadowColor = UIColor.black.cgColor
 		self.infoView.layer.shadowOffset = CGSize(width: -1.0, height: 1.0)
