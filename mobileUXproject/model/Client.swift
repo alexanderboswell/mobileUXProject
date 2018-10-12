@@ -5,6 +5,7 @@
 //  Created by alexander boswell on 9/28/18.
 //  Copyright © 2018 alexander boswell. All rights reserved.
 //
+import UIKit
 
 class Client {
 
@@ -15,12 +16,12 @@ class Client {
 			Course(courseAbbr: "MATH", courseNumber: 334, professor: "Professor Webb", section: 4),
 			Course(courseAbbr: "CS", courseNumber: 356, professor: "Professor Jones", section: 1),
 			Course(courseAbbr: "CS", courseNumber: 455, professor: "Professor Egbert", section: 2)
-			]),
+			], profileImage: UIImage(named: "user1")!),
 		Account(name: "User 2", courses: [
 			Course(courseAbbr: "ASL", courseNumber: 235, professor: "Professor Smith", section: 2),
 			Course(courseAbbr: "ENGL", courseNumber: 220, professor: "Professor Gonzalez", section: 4),
 			Course(courseAbbr: "PHIL", courseNumber: 202, professor: "Professor Rockwood", section: 6)
-			])
+			], profileImage: UIImage(named: "user2")!)
 	]
 	
 	static func getSessionsByWeek(callback: @escaping ([(String, [StudySession])]?) -> Void) {

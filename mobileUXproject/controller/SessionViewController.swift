@@ -42,20 +42,13 @@ class SessionViewController: UIViewController, MKMapViewDelegate {
 		setupUI()
 	}
 	
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if let vc = segue.destination as? StudentsTableViewController,
-			let students = sender as? [String] {
-			
-			slideInTransitioningDelegate.screenAmount = .Ratio3_6
-			vc.transitioningDelegate = slideInTransitioningDelegate
-			vc.modalPresentationStyle = .custom
-			vc.students = students
-		}
-	}
-	
 	//MARK: Actions
 	 
 	@IBAction func confirmed(_ sender: Any) {
+		confirmedImageView.image = UIImage(named: "check")
+		maybeImageView.image = UIImage(named: "questionGrey")
+		canceledImageView.image = UIImage(named: "xGrey")
+		
 		if session.currentResponse == nil || session.currentResponse != .confirmed {
 			session.numberConfirmed += 1
 			
@@ -68,11 +61,14 @@ class SessionViewController: UIViewController, MKMapViewDelegate {
 			session.currentResponse = .confirmed
 			delegate?.reloadCell(session: session)
 		}
-		dismiss(animated: true, completion: nil)
-		
+		setNumbers()
 	}
 	
 	@IBAction func maybe(_ sender: Any) {
+		confirmedImageView.image = UIImage(named: "checkGrey")
+		maybeImageView.image = UIImage(named: "question")
+		canceledImageView.image = UIImage(named: "xGrey")
+		
 		if session.currentResponse == nil || session.currentResponse != .maybe {
 			session.numberMaybe += 1
 			
@@ -85,10 +81,15 @@ class SessionViewController: UIViewController, MKMapViewDelegate {
 			session.currentResponse = .maybe
 			delegate?.reloadCell(session: session)
 		}
-		dismiss(animated: true, completion: nil)
+		setNumbers()
+		
 	}
 	
 	@IBAction func canceled(_ sender: Any) {
+		confirmedImageView.image = UIImage(named: "checkGrey")
+		maybeImageView.image = UIImage(named: "questionGrey")
+		canceledImageView.image = UIImage(named: "x")
+		
 		if session.currentResponse == nil || session.currentResponse != .canceled {
 			session.numberCanceled += 1
 			
@@ -100,7 +101,7 @@ class SessionViewController: UIViewController, MKMapViewDelegate {
 			session.currentResponse = .canceled
 			delegate?.reloadCell(session: session)
 		}
-		dismiss(animated: true, completion: nil)
+		setNumbers()
 	}
 	
 	@IBAction func close(_ sender: Any) {
@@ -143,27 +144,12 @@ class SessionViewController: UIViewController, MKMapViewDelegate {
 		courseTitleLabel.text = session.courseTitle
 		dateLabel.text = session.date
 		locationLabel.text = "\(session.roomNumber) \(session.building)"
-		confirmedLabel.text = "\(session.numberConfirmed)"
-		maybeLabel.text = "\(session.numberMaybe)"
-		canceledLabel.text = "\(session.numberCanceled)"
+		setNumbers()
 		
 		let mapTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.mapTap(_:)))
 		mapView.addGestureRecognizer(mapTapRecognizer)
 		centerMapOnLocation(location: CLLocation(latitude: session.latitude, longitude: session.longitude))
 		mapView.addAnnotation(session)
-		
-//		let confirmedStudentsRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.confirmedStudentsTap(_:)))
-//		confirmedView.addGestureRecognizer(confirmedStudentsRecognizer)
-//		
-//		let maybeStudentsRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.maybeStudentsTap(_:)))
-//		maybeView.addGestureRecognizer(maybeStudentsRecognizer)
-//		
-//		let canceledStudentsRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.canceledStudentsTap(_:)))
-//		canceledView.addGestureRecognizer(canceledStudentsRecognizer)
-//		
-//		configureShadowAndBorder(view: confirmedView)
-//		configureShadowAndBorder(view: maybeView)
-//		configureShadowAndBorder(view: canceledView)
 		
 		if let response = session.currentResponse {
 			if response == .confirmed {
@@ -179,18 +165,9 @@ class SessionViewController: UIViewController, MKMapViewDelegate {
 		}
 	}
 	
-	private func configureShadowAndBorder(view: UIView) {
-	
-		view.layer.cornerRadius = 10.0
-		view.layer.borderWidth = 1.5
-		view.layer.borderColor = UIColor.accentColor.cgColor
-		view.layer.masksToBounds = true
-		
-		view.layer.shadowColor = UIColor.black.cgColor
-		view.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-		view.layer.shadowRadius = 8.0
-		view.layer.shadowOpacity = 0.05
-		view.layer.masksToBounds = false
-		view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: view.layer.cornerRadius).cgPath
+	private func setNumbers() {
+		confirmedLabel.text = "\(session.numberConfirmed)"
+		maybeLabel.text = "\(session.numberMaybe)"
+		canceledLabel.text = "\(session.numberCanceled)"
 	}
 }

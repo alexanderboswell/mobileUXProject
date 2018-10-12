@@ -150,7 +150,7 @@ extension SessionsTableViewController: UICollectionViewDelegate, UICollectionVie
 	func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
 		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? SessionCollectionViewCell else { return }
 		
-		cell.configureShadowAndBorder()
+//		cell.configureShadowAndBorder()
 	}
 
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

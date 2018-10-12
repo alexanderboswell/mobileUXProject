@@ -11,7 +11,7 @@ import UIKit
 class Account {
 
 	var name: String
-	var profileImage: UIImage?
+	var profileImage: UIImage
 	var courses: [Course]
 	var studyPreferences = [StudyPreference]()
 	
@@ -22,7 +22,7 @@ class Account {
 	var quietPlace = false
     var backgroundMusic = false
 	
-	init(name: String, courses: [Course]) {
+	init(name: String, courses: [Course], profileImage: UIImage) {
 		self.name = name
 		self.courses = courses
 		self.studyPreferences = [
@@ -32,6 +32,7 @@ class Account {
 			StudyPreference(description: "Prefer to study in a no shhhh zone"),
 			StudyPreference(description: "Study with background music")
 		]
+		self.profileImage = profileImage
 	}
 	
 	func remove(course: Course) {

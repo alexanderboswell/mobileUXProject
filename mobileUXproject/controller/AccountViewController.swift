@@ -17,6 +17,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 	@IBOutlet private weak var tableView: UITableView!
 	@IBOutlet private weak var profileImageView: UIImageView!
 	@IBOutlet private weak var nameLabel: UILabel!
+	@IBOutlet private weak var blurView: UIVisualEffectView!
 	
 	//MARK: Private variables
 	private var rows = [Any]()
@@ -28,12 +29,19 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 	//MARK: Viewcontroller lifecycle
 	override func viewDidLoad() {
         super.viewDidLoad()
+		
 		if Client.signedInAccount != nil {
 			configureViewWithAccount()
 		} else {
 			configureViewWithoutAccount()
 		}
 		
+	}
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		
+		setupProfileImage()
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -87,9 +95,9 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		let rowIndex = indexPath.row
 		if let _ = rows[indexPath.row] as? String {
-			return 40.0
+			return 56.0
 		} else if let _ = rows[rowIndex] as? Course {
-			return 100.0
+			return 84.0
 		} else if let _ = rows[rowIndex] as? StudyPreference {
 			return 47.0
 		} else {
@@ -155,6 +163,21 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 	
 	private  func configureViewWithoutAccount() {
 		LoginView.isHidden = false
+	}
+	
+	private func setupProfileImage() {
+		let imageSize: CGFloat = 125.0
+		let x = self.profileImageView.frame.midX  - imageSize / 2
+		let y = self.profileImageView.frame.midY - imageSize / 2
+		profileImageView.frame = CGRect(x: x, y: y, width: imageSize, height: imageSize)
+		
+		profileImageView.layer.borderWidth = 2
+		profileImageView.layer.masksToBounds = false
+		profileImageView.layer.borderColor = UIColor.white.cgColor
+		profileImageView.layer.cornerRadius = profileImageView.frame.height/2
+		profileImageView.clipsToBounds = true
+		
+		blurView.alpha = 0.45
 	}
 	
 	private func loadData(account: Account) {
