@@ -7,9 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40D9DEE8F4FE5DBC3CA66BD4 /* Pods_mobileUXprojectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AECDAE543E22C17012D5D28 /* Pods_mobileUXprojectTests.framework */; };
+		EA82400ECB683F8AD6701C61 /* Pods_mobileUXproject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D6296ED6EAD23387671AA06 /* Pods_mobileUXproject.framework */; };
 		F38DC6AA215D8A740055C345 /* SessionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DC6A9215D8A740055C345 /* SessionsTableViewController.swift */; };
 		F38DC6AC215D8B220055C345 /* SessionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DC6AB215D8B220055C345 /* SessionsTableViewCell.swift */; };
 		F38DC6AE215D91A60055C345 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DC6AD215D91A60055C345 /* Extensions.swift */; };
+		F3C1FD1C217522E900DFECED /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C1FD1B217522E900DFECED /* CalendarCollectionViewCell.swift */; };
+		F3C1FD1E217523FD00DFECED /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C1FD1D217523FD00DFECED /* CalendarViewController.swift */; };
+		F3C5C73E2176974F00363CD5 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C5C73D2176974F00363CD5 /* CalendarTableViewCell.swift */; };
+		F3C5C7402176E49C00363CD5 /* AttendingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C5C73F2176E49C00363CD5 /* AttendingTableViewController.swift */; };
 		F3CD23D9216080AC00353EFB /* SessionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CD23D8216080AC00353EFB /* SessionCollectionViewCell.swift */; };
 		F3CD23E12160942200353EFB /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CD23E02160942200353EFB /* SessionViewController.swift */; };
 		F3CD23E42160959800353EFB /* SlideInPresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CD23E32160959800353EFB /* SlideInPresentationManager.swift */; };
@@ -32,6 +38,7 @@
 		F3FCEA152163CE1A00A29B10 /* AccountHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FCEA142163CE1A00A29B10 /* AccountHeaderTableViewCell.swift */; };
 		F3FCEA172163CE2900A29B10 /* AccountCourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FCEA162163CE2900A29B10 /* AccountCourseTableViewCell.swift */; };
 		F3FCEA192163CE4100A29B10 /* AccountPreferenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FCEA182163CE4100A29B10 /* AccountPreferenceTableViewCell.swift */; };
+		FC318636A07C4962207DA247 /* Pods_mobileUXprojectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D62550F10B6115CDB4951E1 /* Pods_mobileUXprojectUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,9 +59,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2AECDAE543E22C17012D5D28 /* Pods_mobileUXprojectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mobileUXprojectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5883E0628EE33FF168566112 /* Pods-mobileUXprojectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileUXprojectTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mobileUXprojectTests/Pods-mobileUXprojectTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7D6296ED6EAD23387671AA06 /* Pods_mobileUXproject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mobileUXproject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D62550F10B6115CDB4951E1 /* Pods_mobileUXprojectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mobileUXprojectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		902CF42BA87CC476885B3C11 /* Pods-mobileUXprojectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileUXprojectUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mobileUXprojectUITests/Pods-mobileUXprojectUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A2DF9FF50EEF714BA2AD1F9B /* Pods-mobileUXprojectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileUXprojectUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mobileUXprojectUITests/Pods-mobileUXprojectUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		ABBD707A7D17F04AA0C60D6A /* Pods-mobileUXprojectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileUXprojectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mobileUXprojectTests/Pods-mobileUXprojectTests.release.xcconfig"; sourceTree = "<group>"; };
+		E0F620D83D60B8857B9C6F0F /* Pods-mobileUXproject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileUXproject.release.xcconfig"; path = "Pods/Target Support Files/Pods-mobileUXproject/Pods-mobileUXproject.release.xcconfig"; sourceTree = "<group>"; };
 		F38DC6A9215D8A740055C345 /* SessionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsTableViewController.swift; sourceTree = "<group>"; };
 		F38DC6AB215D8B220055C345 /* SessionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsTableViewCell.swift; sourceTree = "<group>"; };
 		F38DC6AD215D91A60055C345 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F3C1FD1B217522E900DFECED /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		F3C1FD1D217523FD00DFECED /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		F3C5C73D2176974F00363CD5 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
+		F3C5C73F2176E49C00363CD5 /* AttendingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendingTableViewController.swift; sourceTree = "<group>"; };
 		F3CD23D8216080AC00353EFB /* SessionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCollectionViewCell.swift; sourceTree = "<group>"; };
 		F3CD23E02160942200353EFB /* SessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
 		F3CD23E32160959800353EFB /* SlideInPresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationManager.swift; sourceTree = "<group>"; };
@@ -83,6 +102,7 @@
 		F3FCEA142163CE1A00A29B10 /* AccountHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		F3FCEA162163CE2900A29B10 /* AccountCourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCourseTableViewCell.swift; sourceTree = "<group>"; };
 		F3FCEA182163CE4100A29B10 /* AccountPreferenceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPreferenceTableViewCell.swift; sourceTree = "<group>"; };
+		FB7D74C82A63AA14650176E7 /* Pods-mobileUXproject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileUXproject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mobileUXproject/Pods-mobileUXproject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA82400ECB683F8AD6701C61 /* Pods_mobileUXproject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40D9DEE8F4FE5DBC3CA66BD4 /* Pods_mobileUXprojectTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,12 +126,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC318636A07C4962207DA247 /* Pods_mobileUXprojectUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		97AC31E8A50FF315DB6127F7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7D6296ED6EAD23387671AA06 /* Pods_mobileUXproject.framework */,
+				2AECDAE543E22C17012D5D28 /* Pods_mobileUXprojectTests.framework */,
+				8D62550F10B6115CDB4951E1 /* Pods_mobileUXprojectUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F3CD23E22160958100353EFB /* Presentaion */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +159,8 @@
 				F3DE2544215841D40097B8DE /* mobileUXprojectTests */,
 				F3DE254F215841D40097B8DE /* mobileUXprojectUITests */,
 				F3DE252E215841D30097B8DE /* Products */,
+				F8C09D4A1560B27579E0334A /* Pods */,
+				97AC31E8A50FF315DB6127F7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -183,6 +218,8 @@
 				F3FCEA162163CE2900A29B10 /* AccountCourseTableViewCell.swift */,
 				F3FCEA182163CE4100A29B10 /* AccountPreferenceTableViewCell.swift */,
 				F3EF259A216D6B6E002BB238 /* ActionButton.swift */,
+				F3C1FD1B217522E900DFECED /* CalendarCollectionViewCell.swift */,
+				F3C5C73D2176974F00363CD5 /* CalendarTableViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -207,8 +244,23 @@
 				F38DC6A9215D8A740055C345 /* SessionsTableViewController.swift */,
 				F3EF2598216D20B6002BB238 /* AddCourseViewController.swift */,
 				F3CD23E02160942200353EFB /* SessionViewController.swift */,
+				F3C1FD1D217523FD00DFECED /* CalendarViewController.swift */,
+				F3C5C73F2176E49C00363CD5 /* AttendingTableViewController.swift */,
 			);
 			path = controller;
+			sourceTree = "<group>";
+		};
+		F8C09D4A1560B27579E0334A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FB7D74C82A63AA14650176E7 /* Pods-mobileUXproject.debug.xcconfig */,
+				E0F620D83D60B8857B9C6F0F /* Pods-mobileUXproject.release.xcconfig */,
+				5883E0628EE33FF168566112 /* Pods-mobileUXprojectTests.debug.xcconfig */,
+				ABBD707A7D17F04AA0C60D6A /* Pods-mobileUXprojectTests.release.xcconfig */,
+				A2DF9FF50EEF714BA2AD1F9B /* Pods-mobileUXprojectUITests.debug.xcconfig */,
+				902CF42BA87CC476885B3C11 /* Pods-mobileUXprojectUITests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,9 +270,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3DE2555215841D40097B8DE /* Build configuration list for PBXNativeTarget "mobileUXproject" */;
 			buildPhases = (
+				27691311309497D696EE2EC3 /* [CP] Check Pods Manifest.lock */,
 				F3DE2529215841D30097B8DE /* Sources */,
 				F3DE252A215841D30097B8DE /* Frameworks */,
 				F3DE252B215841D30097B8DE /* Resources */,
+				09A14451B040CB29017406E9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -235,6 +289,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3DE2558215841D40097B8DE /* Build configuration list for PBXNativeTarget "mobileUXprojectTests" */;
 			buildPhases = (
+				81333CF03928B9806F3D35CB /* [CP] Check Pods Manifest.lock */,
 				F3DE253D215841D40097B8DE /* Sources */,
 				F3DE253E215841D40097B8DE /* Frameworks */,
 				F3DE253F215841D40097B8DE /* Resources */,
@@ -253,6 +308,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3DE255B215841D40097B8DE /* Build configuration list for PBXNativeTarget "mobileUXprojectUITests" */;
 			buildPhases = (
+				65561A8EBBA281A76A510E35 /* [CP] Check Pods Manifest.lock */,
 				F3DE2548215841D40097B8DE /* Sources */,
 				F3DE2549215841D40097B8DE /* Frameworks */,
 				F3DE254A215841D40097B8DE /* Resources */,
@@ -337,6 +393,97 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		09A14451B040CB29017406E9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-mobileUXproject/Pods-mobileUXproject-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mobileUXproject/Pods-mobileUXproject-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		27691311309497D696EE2EC3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mobileUXproject-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		65561A8EBBA281A76A510E35 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mobileUXprojectUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		81333CF03928B9806F3D35CB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mobileUXprojectTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F3DE2529215841D30097B8DE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -356,7 +503,11 @@
 				F38DC6AA215D8A740055C345 /* SessionsTableViewController.swift in Sources */,
 				F3E5ED80216C565700B0FBEA /* CourseViewController.swift in Sources */,
 				F3FC8141215EA8A300878CFC /* StudySession.swift in Sources */,
+				F3C1FD1E217523FD00DFECED /* CalendarViewController.swift in Sources */,
 				F3EECC0D2164652700A5590E /* StudyPreference.swift in Sources */,
+				F3C1FD1C217522E900DFECED /* CalendarCollectionViewCell.swift in Sources */,
+				F3C5C73E2176974F00363CD5 /* CalendarTableViewCell.swift in Sources */,
+				F3C5C7402176E49C00363CD5 /* AttendingTableViewController.swift in Sources */,
 				F3CD23E42160959800353EFB /* SlideInPresentationManager.swift in Sources */,
 				F3FC8147215EADC000878CFC /* Client.swift in Sources */,
 				F3CD23E6216095E600353EFB /* SlideInPresentationController.swift in Sources */,
@@ -534,6 +685,7 @@
 		};
 		F3DE2556215841D40097B8DE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB7D74C82A63AA14650176E7 /* Pods-mobileUXproject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -553,6 +705,7 @@
 		};
 		F3DE2557215841D40097B8DE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0F620D83D60B8857B9C6F0F /* Pods-mobileUXproject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -572,6 +725,7 @@
 		};
 		F3DE2559215841D40097B8DE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5883E0628EE33FF168566112 /* Pods-mobileUXprojectTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -593,6 +747,7 @@
 		};
 		F3DE255A215841D40097B8DE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ABBD707A7D17F04AA0C60D6A /* Pods-mobileUXprojectTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -614,6 +769,7 @@
 		};
 		F3DE255C215841D40097B8DE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2DF9FF50EEF714BA2AD1F9B /* Pods-mobileUXprojectUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -634,6 +790,7 @@
 		};
 		F3DE255D215841D40097B8DE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 902CF42BA87CC476885B3C11 /* Pods-mobileUXprojectUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

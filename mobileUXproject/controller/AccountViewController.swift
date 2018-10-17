@@ -22,6 +22,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 	//MARK: Private variables
 	private var rows = [Any]()
 	private var presentedCourseIndex: IndexPath?
+	private let impact = UIImpactFeedbackGenerator()
 	
 	//MARK: Public variables
 	lazy var slideInTransitioningDelegate = SlideInPresentationManager()
@@ -45,9 +46,9 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		impact.impactOccurred()
 		if let vc = segue.destination as? CourseViewController,
 			let course = sender as? Course {
-			
 			slideInTransitioningDelegate.screenAmount = .Ratio3_6
 			vc.transitioningDelegate = slideInTransitioningDelegate
 			vc.modalPresentationStyle = .custom
@@ -55,7 +56,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 			vc.course = course
 		} else if let vc = segue.destination as? AddCourseViewController {
 			
-			slideInTransitioningDelegate.screenAmount = .Ratio3_6
+			slideInTransitioningDelegate.screenAmount = .Ratio4_6
 			vc.transitioningDelegate = slideInTransitioningDelegate
 			vc.modalPresentationStyle = .custom
 			vc.delegate = self

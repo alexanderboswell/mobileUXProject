@@ -16,16 +16,44 @@ class Client {
 			Course(courseAbbr: "MATH", courseNumber: 334, professor: "Professor Webb", section: 4),
 			Course(courseAbbr: "CS", courseNumber: 356, professor: "Professor Jones", section: 1),
 			Course(courseAbbr: "CS", courseNumber: 455, professor: "Professor Egbert", section: 2)
-			], profileImage: UIImage(named: "user1")!),
-		Account(name: "User 2", courses: [
-			Course(courseAbbr: "ASL", courseNumber: 235, professor: "Professor Smith", section: 2),
-			Course(courseAbbr: "ENGL", courseNumber: 220, professor: "Professor Gonzalez", section: 4),
-			Course(courseAbbr: "PHIL", courseNumber: 202, professor: "Professor Rockwood", section: 6)
-			], profileImage: UIImage(named: "user2")!)
+			], profileImage: UIImage(named: "user1")!)
 	]
+	
+	static func getSessions(callback: @escaping ([Date: [StudySession]])  -> Void) {
+		let formatter = DateFormatter()
+		formatter.dateFormat = "yyyy MM dd"
+		
+		callback([
+			formatter.date(from: "2018 10 03")! : [
+				StudySession(courseTitle: "CS 455", date: "3 - 4 pm", roomNumber: "3104", building: "JKB", numberConfirmed: 0, numberMaybe: 6, numberCanceled: 2, latitude: 40.249801, longitude: -111.6508399, confirmedStudents: [], maybeStudents: ["Daniel T.", "Geoff J.", "Kevin P.", "Shaun D.",  "Vicki C.", "Carina Y."], canceledStudents: ["Alex E.", "Andrew D."])],
+			formatter.date(from: "2018 10 05")! : [
+				StudySession(courseTitle: "CS 455", date: "3 - 4 pm", roomNumber: "3104", building: "JKB", numberConfirmed: 0, numberMaybe: 6, numberCanceled: 2, latitude: 40.249801, longitude: -111.6508399, confirmedStudents: [], maybeStudents: ["Daniel T.", "Geoff J.", "Kevin P.", "Shaun D.",  "Vicki C.", "Carina Y."], canceledStudents: ["Alex E.", "Andrew D."])],
+			formatter.date(from: "2018 10 09")! : [
+				StudySession(courseTitle: "CS 356", date: "10 - 11 am", roomNumber: "2111", building: "JKB", numberConfirmed: 6, numberMaybe: 0, numberCanceled: 3, latitude: 40.249801, longitude: -111.6508399, confirmedStudents: ["Alex B.", "Hannah E.", "Geoff J.", "Larry F.", "Mitchell S.", "Josh G."], maybeStudents: [], canceledStudents: ["Michele M.", "Jack R.", "Kevin P."]),
+				StudySession(courseTitle: "CS 455", date: "3 - 4 pm", roomNumber: "3104", building: "JKB", numberConfirmed: 0, numberMaybe: 6, numberCanceled: 2, latitude: 40.249801, longitude: -111.6508399, confirmedStudents: [], maybeStudents: ["Daniel T.", "Geoff J.", "Kevin P.", "Shaun D.",  "Vicki C.", "Carina Y."], canceledStudents: ["Alex E.", "Andrew D."])
+			],
+			formatter.date(from: "2018 10 15")! : [
+				StudySession(courseTitle: "CS 356", date: "10 - 11 am", roomNumber: "2111", building: "JKB", numberConfirmed: 6, numberMaybe: 0, numberCanceled: 3, latitude: 40.249801, longitude: -111.6508399, confirmedStudents: ["Alex B.", "Hannah E.", "Geoff J.", "Larry F.", "Mitchell S.", "Josh G."], maybeStudents: [], canceledStudents: ["Michele M.", "Jack R.", "Kevin P."]),
+				StudySession(courseTitle: "CS 356", date: "10:45 - 11:45 am", roomNumber: "2111", building: "JKB", numberConfirmed: 6, numberMaybe: 0, numberCanceled: 3, latitude: 40.249801, longitude: -111.6508399, confirmedStudents: ["Alex B.", "Hannah E.", "Geoff J.", "Larry F.", "Mitchell S.", "Josh G."], maybeStudents: [], canceledStudents: ["Michele M.", "Jack R.", "Kevin P."]),
+				StudySession(courseTitle: "MATH 334", date: "1 - 2 pm", roomNumber: "1170", building: "TMCB", numberConfirmed: 3, numberMaybe: 2, numberCanceled: 4, latitude: 40.249801, longitude: -111.6508399, confirmedStudents: ["Rolland K.", "Lynda E.", "Daniel T."], maybeStudents: ["Carina Y.", "Shirley Q.", "Bryn W."], canceledStudents: ["Lavena R.", "Lisa T.", "Abbey N.", "Sammi S."]),
+				StudySession(courseTitle: "CS 455", date: "3 - 4 pm", roomNumber: "3104", building: "JKB", numberConfirmed: 0, numberMaybe: 6, numberCanceled: 2, latitude: 40.249801, longitude: -111.6508399, confirmedStudents: [], maybeStudents: ["Daniel T.", "Geoff J.", "Kevin P.", "Shaun D.",  "Vicki C.", "Carina Y."], canceledStudents: ["Alex E.", "Andrew D."])],
+			formatter.date(from: "2018 10 18")! : [
+				StudySession(courseTitle: "CS 356", date: "10 - 11 am", roomNumber: "2111", building: "JKB", numberConfirmed: 6, numberMaybe: 0, numberCanceled: 3, latitude: 40.249801, longitude: -111.6508399, confirmedStudents: ["Alex B.", "Hannah E.", "Geoff J.", "Larry F.", "Mitchell S.", "Josh G."], maybeStudents: [], canceledStudents: ["Michele M.", "Jack R.", "Kevin P."]),
+				StudySession(courseTitle: "CS 356", date: "10:45 - 11:45 am", roomNumber: "2111", building: "JKB", numberConfirmed: 6, numberMaybe: 0, numberCanceled: 3, latitude: 40.249801, longitude: -111.6508399, confirmedStudents: ["Alex B.", "Hannah E.", "Geoff J.", "Larry F.", "Mitchell S.", "Josh G."], maybeStudents: [], canceledStudents: ["Michele M.", "Jack R.", "Kevin P."])],
+			formatter.date(from: "2018 10 23")! : [
+				StudySession(courseTitle: "CS 356", date: "10 - 11 am", roomNumber: "2111", building: "JKB", numberConfirmed: 6, numberMaybe: 0, numberCanceled: 3, latitude: 40.249801, longitude: -111.6508399, confirmedStudents: ["Alex B.", "Hannah E.", "Geoff J.", "Larry F.", "Mitchell S.", "Josh G."], maybeStudents: [], canceledStudents: ["Michele M.", "Jack R.", "Kevin P."]),
+				StudySession(courseTitle: "CS 356", date: "10:45 - 11:45 am", roomNumber: "2111", building: "JKB", numberConfirmed: 6, numberMaybe: 0, numberCanceled: 3, latitude: 40.249801, longitude: -111.6508399, confirmedStudents: ["Alex B.", "Hannah E.", "Geoff J.", "Larry F.", "Mitchell S.", "Josh G."], maybeStudents: [], canceledStudents: ["Michele M.", "Jack R.", "Kevin P."]),
+				StudySession(courseTitle: "MATH 334", date: "1 - 2 pm", roomNumber: "1170", building: "TMCB", numberConfirmed: 3, numberMaybe: 2, numberCanceled: 4, latitude: 40.249801, longitude: -111.6508399, confirmedStudents: ["Rolland K.", "Lynda E.", "Daniel T."], maybeStudents: ["Carina Y.", "Shirley Q.", "Bryn W."], canceledStudents: ["Lavena R.", "Lisa T.", "Abbey N.", "Sammi S."]),
+				StudySession(courseTitle: "CS 455", date: "3 - 4 pm", roomNumber: "3104", building: "JKB", numberConfirmed: 0, numberMaybe: 6, numberCanceled: 2, latitude: 40.249801, longitude: -111.6508399, confirmedStudents: [], maybeStudents: ["Daniel T.", "Geoff J.", "Kevin P.", "Shaun D.",  "Vicki C.", "Carina Y."], canceledStudents: ["Alex E.", "Andrew D."])],
+			formatter.date(from: "2018 10 27")! : [
+				StudySession(courseTitle: "MATH 334", date: "1 - 2 pm", roomNumber: "1170", building: "TMCB", numberConfirmed: 3, numberMaybe: 2, numberCanceled: 4, latitude: 40.249801, longitude: -111.6508399, confirmedStudents: ["Rolland K.", "Lynda E.", "Daniel T."], maybeStudents: ["Carina Y.", "Shirley Q.", "Bryn W."], canceledStudents: ["Lavena R.", "Lisa T.", "Abbey N.", "Sammi S."]),
+				StudySession(courseTitle: "CS 455", date: "3 - 4 pm", roomNumber: "3104", building: "JKB", numberConfirmed: 0, numberMaybe: 6, numberCanceled: 2, latitude: 40.249801, longitude: -111.6508399, confirmedStudents: [], maybeStudents: ["Daniel T.", "Geoff J.", "Kevin P.", "Shaun D.",  "Vicki C.", "Carina Y."], canceledStudents: ["Alex E.", "Andrew D."])],
+			])
+	}
 	
 	static func getSessionsByWeek(callback: @escaping ([(String, [StudySession])]?) -> Void) {
 		if signedInAccount?.name == "User 1" {
+			
 			callback([
 				("10/15 - 10/21", [
 					StudySession(courseTitle: "MATH 334", date: "10/15 1 - 2 pm", roomNumber: "1170", building: "TMCB", numberConfirmed: 3, numberMaybe: 2, numberCanceled: 4, latitude: 40.249801, longitude: -111.6508399, confirmedStudents: ["Rolland K.", "Lynda E.", "Daniel T."], maybeStudents: ["Carina Y.", "Shirley Q.", "Bryn W."], canceledStudents: ["Lavena R.", "Lisa T.", "Abbey N.", "Sammi S."]),

@@ -20,13 +20,10 @@ class SessionViewController: UIViewController, MKMapViewDelegate {
 	@IBOutlet private weak var courseTitleLabel: UILabel!
 	@IBOutlet weak var dateLabel: UILabel!
 	@IBOutlet weak var locationLabel: UILabel!
-	@IBOutlet weak var respondButton: UIButton!
 	@IBOutlet weak var mapView: MKMapView!
 	@IBOutlet weak var confirmedView: UIView!
-	@IBOutlet weak var maybeView: UIView!
 	@IBOutlet weak var canceledView: UIView!
 	@IBOutlet weak var confirmedLabel: UILabel!
-	@IBOutlet weak var maybeLabel: UILabel!
 	@IBOutlet weak var canceledLabel: UILabel!
 	@IBOutlet weak var confirmedImageView: UIImageView!
 	@IBOutlet weak var maybeImageView: UIImageView!
@@ -167,7 +164,6 @@ class SessionViewController: UIViewController, MKMapViewDelegate {
 	
 	private func setNumbers() {
 		confirmedLabel.text = "\(session.numberConfirmed)"
-		maybeLabel.text = "\(session.numberMaybe)"
 		canceledLabel.text = "\(session.numberCanceled)"
 	}
 }
