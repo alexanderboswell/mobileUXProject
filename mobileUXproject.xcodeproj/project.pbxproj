@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		40D9DEE8F4FE5DBC3CA66BD4 /* Pods_mobileUXprojectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AECDAE543E22C17012D5D28 /* Pods_mobileUXprojectTests.framework */; };
 		EA82400ECB683F8AD6701C61 /* Pods_mobileUXproject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D6296ED6EAD23387671AA06 /* Pods_mobileUXproject.framework */; };
+		F32BB35A217832800068D9C5 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32BB359217832800068D9C5 /* FilterTableViewCell.swift */; };
 		F38DC6AA215D8A740055C345 /* SessionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DC6A9215D8A740055C345 /* SessionsTableViewController.swift */; };
 		F38DC6AC215D8B220055C345 /* SessionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DC6AB215D8B220055C345 /* SessionsTableViewCell.swift */; };
 		F38DC6AE215D91A60055C345 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DC6AD215D91A60055C345 /* Extensions.swift */; };
@@ -16,6 +17,8 @@
 		F3C1FD1E217523FD00DFECED /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C1FD1D217523FD00DFECED /* CalendarViewController.swift */; };
 		F3C5C73E2176974F00363CD5 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C5C73D2176974F00363CD5 /* CalendarTableViewCell.swift */; };
 		F3C5C7402176E49C00363CD5 /* AttendingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C5C73F2176E49C00363CD5 /* AttendingTableViewController.swift */; };
+		F3C5C7422176E74F00363CD5 /* AttendingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C5C7412176E74F00363CD5 /* AttendingTableViewCell.swift */; };
+		F3C5C74421782F3E00363CD5 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C5C74321782F3E00363CD5 /* FilterViewController.swift */; };
 		F3CD23D9216080AC00353EFB /* SessionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CD23D8216080AC00353EFB /* SessionCollectionViewCell.swift */; };
 		F3CD23E12160942200353EFB /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CD23E02160942200353EFB /* SessionViewController.swift */; };
 		F3CD23E42160959800353EFB /* SlideInPresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CD23E32160959800353EFB /* SlideInPresentationManager.swift */; };
@@ -67,6 +70,7 @@
 		A2DF9FF50EEF714BA2AD1F9B /* Pods-mobileUXprojectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileUXprojectUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mobileUXprojectUITests/Pods-mobileUXprojectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		ABBD707A7D17F04AA0C60D6A /* Pods-mobileUXprojectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileUXprojectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mobileUXprojectTests/Pods-mobileUXprojectTests.release.xcconfig"; sourceTree = "<group>"; };
 		E0F620D83D60B8857B9C6F0F /* Pods-mobileUXproject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileUXproject.release.xcconfig"; path = "Pods/Target Support Files/Pods-mobileUXproject/Pods-mobileUXproject.release.xcconfig"; sourceTree = "<group>"; };
+		F32BB359217832800068D9C5 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		F38DC6A9215D8A740055C345 /* SessionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsTableViewController.swift; sourceTree = "<group>"; };
 		F38DC6AB215D8B220055C345 /* SessionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsTableViewCell.swift; sourceTree = "<group>"; };
 		F38DC6AD215D91A60055C345 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -74,6 +78,8 @@
 		F3C1FD1D217523FD00DFECED /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		F3C5C73D2176974F00363CD5 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		F3C5C73F2176E49C00363CD5 /* AttendingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendingTableViewController.swift; sourceTree = "<group>"; };
+		F3C5C7412176E74F00363CD5 /* AttendingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendingTableViewCell.swift; sourceTree = "<group>"; };
+		F3C5C74321782F3E00363CD5 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		F3CD23D8216080AC00353EFB /* SessionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCollectionViewCell.swift; sourceTree = "<group>"; };
 		F3CD23E02160942200353EFB /* SessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
 		F3CD23E32160959800353EFB /* SlideInPresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationManager.swift; sourceTree = "<group>"; };
@@ -220,6 +226,8 @@
 				F3EF259A216D6B6E002BB238 /* ActionButton.swift */,
 				F3C1FD1B217522E900DFECED /* CalendarCollectionViewCell.swift */,
 				F3C5C73D2176974F00363CD5 /* CalendarTableViewCell.swift */,
+				F3C5C7412176E74F00363CD5 /* AttendingTableViewCell.swift */,
+				F32BB359217832800068D9C5 /* FilterTableViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -246,6 +254,7 @@
 				F3CD23E02160942200353EFB /* SessionViewController.swift */,
 				F3C1FD1D217523FD00DFECED /* CalendarViewController.swift */,
 				F3C5C73F2176E49C00363CD5 /* AttendingTableViewController.swift */,
+				F3C5C74321782F3E00363CD5 /* FilterViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -507,8 +516,11 @@
 				F3EECC0D2164652700A5590E /* StudyPreference.swift in Sources */,
 				F3C1FD1C217522E900DFECED /* CalendarCollectionViewCell.swift in Sources */,
 				F3C5C73E2176974F00363CD5 /* CalendarTableViewCell.swift in Sources */,
+				F32BB35A217832800068D9C5 /* FilterTableViewCell.swift in Sources */,
 				F3C5C7402176E49C00363CD5 /* AttendingTableViewController.swift in Sources */,
 				F3CD23E42160959800353EFB /* SlideInPresentationManager.swift in Sources */,
+				F3C5C74421782F3E00363CD5 /* FilterViewController.swift in Sources */,
+				F3C5C7422176E74F00363CD5 /* AttendingTableViewCell.swift in Sources */,
 				F3FC8147215EADC000878CFC /* Client.swift in Sources */,
 				F3CD23E6216095E600353EFB /* SlideInPresentationController.swift in Sources */,
 				F3FC8143215EAA0100878CFC /* Account.swift in Sources */,

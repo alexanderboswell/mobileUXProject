@@ -23,6 +23,24 @@ extension UIColor {
 	}
 }
 
+extension UIView {
+	func addBorder(color: UIColor) {
+		layer.cornerRadius = 10.0
+		layer.borderWidth = 1.5
+		layer.borderColor = color.cgColor
+		layer.masksToBounds = true
+	}
+	
+	func  addShadow() {
+		layer.shadowColor = UIColor.black.cgColor
+		layer.shadowOffset = CGSize(width: -1.0, height: 1.0)
+		layer.shadowRadius = 8
+		layer.shadowOpacity = 0.08
+		layer.masksToBounds = false
+		layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+	}
+}
+
 extension UITableView {
 	func scrollToTop(animated: Bool) {
 		DispatchQueue.main.asyncAfter(deadline: .now()) {

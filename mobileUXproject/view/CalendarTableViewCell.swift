@@ -8,6 +8,9 @@
 
 import UIKit
 
+public let ADDED_STUDY_SESSION_NOTIFICATION = NSNotification.Name("AddedStudySession")
+public let REMOVED_STUDY_SESSION_NOTIFICATION = NSNotification.Name("RemovedStudySession")
+
 class CalendarTableViewCell: UITableViewCell {
 
 	@IBOutlet weak var confirmView: UIView!
@@ -122,6 +125,8 @@ class CalendarTableViewCell: UITableViewCell {
 			session.currentResponse = .confirmed
 		}
 		setNumbers()
+		
+		NotificationCenter.default.post(name: ADDED_STUDY_SESSION_NOTIFICATION, object: session)
 	}
 	
 	@objc private func handleCancelTap(_ sender: UITapGestureRecognizer) {
@@ -140,14 +145,9 @@ class CalendarTableViewCell: UITableViewCell {
 			session.currentResponse = .canceled
 		}
 		setNumbers()
+		
+		NotificationCenter.default.post(name: REMOVED_STUDY_SESSION_NOTIFICATION, object: session)
 	}
 }
 
-extension UIView {
-	 func addBorder(color: UIColor) {
-		layer.cornerRadius = 10.0
-		layer.borderWidth = 1.5
-		layer.borderColor = color.cgColor
-		layer.masksToBounds = true
-	}
-}
+

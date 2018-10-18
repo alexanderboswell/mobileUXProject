@@ -13,23 +13,36 @@ enum Response {
 	case confirmed, maybe, canceled
 }
 
+let months  = [1:  "Jan",
+			   2: "Feb",
+			   3: "Mar",
+			   4: "Apr",
+			   5: "May",
+			   6: "Jun",
+			   7: "Jul",
+			   8: "Aug",
+			   9: "Sept",
+			   10: "Oct",
+			   11: "Nov",
+			   12: "Dec"]
+
 class StudySession: NSObject, MKAnnotation {
 	
 	
 	var courseTitle: String
-	var date: String
 	var roomNumber: String
 	var building: String
 	var numberConfirmed: Int
-	var confirmedStudents: [String]
 	var numberMaybe: Int
-	var maybeStudents: [String]
 	var numberCanceled: Int
-	var canceledStudents: [String]
 	var latitude: Double
 	var longitude: Double
+	var startDate: Date
+	var endDate: Date
 	
 	var currentResponse: Response?
+	
+	private let formatter = DateFormatter()
 	
 	//MARK: MKAnnotation
 	
@@ -45,14 +58,45 @@ class StudySession: NSObject, MKAnnotation {
 		return nil
 	}
 	
-	init(courseTitle: String, date: String,
+	var day: String {
+		formatter.dateFormat = "dd"
+		return formatter.string(from: startDate)
+	}
+	
+	var month: String {
+		formatter.dateFormat = "MM"
+		if let monthKey = Int(formatter.string(from: startDate)), let month = months[monthKey] {
+		return month
+		} else {
+			return ""
+		}
+	}
+	
+	var startTime: String {
+		formatter.dateFormat = "hh:mm"
+		return formatter.string(from: startDate)
+	}
+	
+	var endTime: String {
+		formatter.dateFormat = "hh:mm a"
+		return formatter.string(from: startDate)
+	}
+	
+	var date: String {
+		return "\(startTime) - \(endTime)"
+	}
+	
+	init(courseTitle: String, startDateString: String, endDateString: String,
 		 roomNumber: String, building: String,
 		 numberConfirmed: Int, numberMaybe: Int,
 		 numberCanceled: Int, latitude: Double,
-		 longitude: Double,  confirmedStudents: [String],
-		 maybeStudents: [String], canceledStudents: [String]) {
+		 longitude: Double, response: Response? = nil) {
+		
+		formatter.dateFormat = "yyyy MM dd hh:mm a"
+		
 		self.courseTitle = courseTitle
-		self.date = date
+		self.startDate = formatter.date(from: startDateString)!
+		self.endDate = formatter.date(from: endDateString)!
 		self.roomNumber = roomNumber
 		self.building = building
 		self.numberConfirmed = numberConfirmed
@@ -60,8 +104,6 @@ class StudySession: NSObject, MKAnnotation {
 		self.numberCanceled = numberCanceled
 		self.latitude = latitude
 		self.longitude = longitude
-		self.confirmedStudents = confirmedStudents
-		self.maybeStudents = maybeStudents
-		self.canceledStudents = canceledStudents
+		self.currentResponse = response
 	}
 }

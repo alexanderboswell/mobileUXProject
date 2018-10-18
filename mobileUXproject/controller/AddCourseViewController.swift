@@ -28,6 +28,7 @@ class AddCourseViewController: UIViewController, UIPickerViewDelegate, UIPickerV
 	var sections: [(String, Int)] = [(String, Int)]()
 	var sectionRow = 0
 	var delegate: AddCourseProtocol?
+	private let impact = UIImpactFeedbackGenerator()
 	
 	
 	override func viewDidLoad() {
@@ -42,6 +43,7 @@ class AddCourseViewController: UIViewController, UIPickerViewDelegate, UIPickerV
 	}
 	
 	@IBAction func add(_ sender: Any) {
+		impact.impactOccurred()
 		delegate?.addCourse(course: Course(courseAbbr: courseAbbrs[courseAbbrRow], courseNumber: Int(courseNumbers[courseNumberRow]) ?? 0, professor: sections[sectionRow].0, section: sections[sectionRow].1))
 		self.dismiss(animated: true, completion: nil)
 	}

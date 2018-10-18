@@ -31,6 +31,8 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
+		Client.login(accountNumber: 0)
+		
 		if Client.signedInAccount != nil {
 			configureViewWithAccount()
 		} else {
@@ -56,7 +58,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 			vc.course = course
 		} else if let vc = segue.destination as? AddCourseViewController {
 			
-			slideInTransitioningDelegate.screenAmount = .Ratio4_6
+			slideInTransitioningDelegate.screenAmount = .Ratio5_6
 			vc.transitioningDelegate = slideInTransitioningDelegate
 			vc.modalPresentationStyle = .custom
 			vc.delegate = self
@@ -78,6 +80,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 	}
 	
 	@IBAction func removeCourse(segue: UIStoryboardSegue) {
+		impact.impactOccurred()
 		if let indexPath = presentedCourseIndex,
 			let course = rows[indexPath.row] as? Course {
 			rows.remove(at: indexPath.row)
