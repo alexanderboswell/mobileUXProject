@@ -13,9 +13,7 @@ class FilterViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	
 	var slideInTransitioningDelegate: SlideInPresentationManager!
 	var delegate: FilterProtocol?
-	var filters: [String]!
-	var courseTitles: [String]!
-
+	
 	override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,21 +26,15 @@ class FilterViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return courseTitles.count
+		return Client.filters.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath) as? FilterTableViewCell else {
 			return UITableViewCell()
 		}
-		let title = courseTitles[indexPath.row]
-		cell.courseTitleLabel.text = title
-		cell.courseTitle = title
-		if filters.contains(title) {
-			cell.isOn = true
-		} else {
-			cell.isOn = false
-		}
+		cell.title = Client.filters[indexPath.row].title
+		cell.isOn = Client.filters[indexPath.row].isOn
 		
 		cell.delegate = delegate
 		cell.selectionStyle = .none

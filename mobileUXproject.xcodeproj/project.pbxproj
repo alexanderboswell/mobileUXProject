@@ -10,6 +10,8 @@
 		40D9DEE8F4FE5DBC3CA66BD4 /* Pods_mobileUXprojectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AECDAE543E22C17012D5D28 /* Pods_mobileUXprojectTests.framework */; };
 		EA82400ECB683F8AD6701C61 /* Pods_mobileUXproject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D6296ED6EAD23387671AA06 /* Pods_mobileUXproject.framework */; };
 		F32BB35A217832800068D9C5 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32BB359217832800068D9C5 /* FilterTableViewCell.swift */; };
+		F3453EE0217ACA3B004A4327 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3453EDF217ACA3B004A4327 /* Filter.swift */; };
+		F3453EE2217B927F004A4327 /* NotificationPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3453EE1217B927F004A4327 /* NotificationPreference.swift */; };
 		F38DC6AA215D8A740055C345 /* SessionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DC6A9215D8A740055C345 /* SessionsTableViewController.swift */; };
 		F38DC6AC215D8B220055C345 /* SessionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DC6AB215D8B220055C345 /* SessionsTableViewCell.swift */; };
 		F38DC6AE215D91A60055C345 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DC6AD215D91A60055C345 /* Extensions.swift */; };
@@ -71,6 +73,8 @@
 		ABBD707A7D17F04AA0C60D6A /* Pods-mobileUXprojectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileUXprojectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mobileUXprojectTests/Pods-mobileUXprojectTests.release.xcconfig"; sourceTree = "<group>"; };
 		E0F620D83D60B8857B9C6F0F /* Pods-mobileUXproject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileUXproject.release.xcconfig"; path = "Pods/Target Support Files/Pods-mobileUXproject/Pods-mobileUXproject.release.xcconfig"; sourceTree = "<group>"; };
 		F32BB359217832800068D9C5 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
+		F3453EDF217ACA3B004A4327 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		F3453EE1217B927F004A4327 /* NotificationPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPreference.swift; sourceTree = "<group>"; };
 		F38DC6A9215D8A740055C345 /* SessionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsTableViewController.swift; sourceTree = "<group>"; };
 		F38DC6AB215D8B220055C345 /* SessionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsTableViewCell.swift; sourceTree = "<group>"; };
 		F38DC6AD215D91A60055C345 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -240,6 +244,8 @@
 				F3FC8144215EABF900878CFC /* Course.swift */,
 				F3FC8146215EADC000878CFC /* Client.swift */,
 				F3EECC0C2164652700A5590E /* StudyPreference.swift */,
+				F3453EDF217ACA3B004A4327 /* Filter.swift */,
+				F3453EE1217B927F004A4327 /* NotificationPreference.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -517,8 +523,10 @@
 				F3C1FD1C217522E900DFECED /* CalendarCollectionViewCell.swift in Sources */,
 				F3C5C73E2176974F00363CD5 /* CalendarTableViewCell.swift in Sources */,
 				F32BB35A217832800068D9C5 /* FilterTableViewCell.swift in Sources */,
+				F3453EE2217B927F004A4327 /* NotificationPreference.swift in Sources */,
 				F3C5C7402176E49C00363CD5 /* AttendingTableViewController.swift in Sources */,
 				F3CD23E42160959800353EFB /* SlideInPresentationManager.swift in Sources */,
+				F3453EE0217ACA3B004A4327 /* Filter.swift in Sources */,
 				F3C5C74421782F3E00363CD5 /* FilterViewController.swift in Sources */,
 				F3C5C7422176E74F00363CD5 /* AttendingTableViewCell.swift in Sources */,
 				F3FC8147215EADC000878CFC /* Client.swift in Sources */,

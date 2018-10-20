@@ -11,7 +11,7 @@ import UIKit
 public let LOGIN_NOTIFICATION = NSNotification.Name("LoggedIn")
 public let LOGOUT_NOTIFICATION = NSNotification.Name("LoggedOut")
 
-class SessionsTableViewController: UITableViewController, ResponseToSessionProtocol {
+class SessionsTableViewController: UITableViewController {
 	
 	lazy var slideInTransitioningDelegate = SlideInPresentationManager()
 	private var storedOffsets = [Int: CGFloat]()
@@ -33,7 +33,7 @@ class SessionsTableViewController: UITableViewController, ResponseToSessionProto
 			
 			vc.slideInTransitioningDelegate = slideInTransitioningDelegate
 			vc.session = session
-			vc.delegate = self
+//			vc.delegate = self
 		}
 	}
 	
@@ -140,8 +140,6 @@ extension SessionsTableViewController: UICollectionViewDelegate, UICollectionVie
 		cell.dateLabel.text = session.date
 		cell.locationLabel.text = "\(session.roomNumber) \(session.building)"
 		cell.confirmedLabel.text = "\(session.numberConfirmed)"
-		cell.maybeLabel.text = "\(session.numberMaybe)"
-		cell.canceledLabel.text = "\(session.numberCanceled)"
 		setReponseimages(session: session, collectionViewCell: cell)
 		
 		return cell

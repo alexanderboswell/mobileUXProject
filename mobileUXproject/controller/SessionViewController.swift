@@ -12,7 +12,8 @@ import EventKit
 import EventKitUI
 
 protocol ResponseToSessionProtocol {
-	func reloadCell(session: StudySession)
+	func AddedSession(session: StudySession)
+	func RemovedSession(session: StudySession)
 }
 
 class SessionViewController: UIViewController, MKMapViewDelegate {
@@ -27,6 +28,8 @@ class SessionViewController: UIViewController, MKMapViewDelegate {
 	@IBOutlet weak var confirmedLabel: UILabel!
 	@IBOutlet weak var canceledLabel: UILabel!
 	@IBOutlet weak var addToCalendarView: UIView!
+	@IBOutlet weak var attendButton: ActionButton!
+	@IBOutlet weak var leaveButton: ActionButton!
 	
 	var session: StudySession!
 	var slideInTransitioningDelegate: SlideInPresentationManager!
@@ -46,11 +49,21 @@ class SessionViewController: UIViewController, MKMapViewDelegate {
 		self.dismiss(animated: true, completion: nil)
 	}
 	
+	@IBAction func attendSession(_ sender: UIButton) {
+		impact.impactOccurred()
+		session.currentResponse = .confirmed
+		self.dismiss(animated: true) {
+			self.delegate?.AddedSession(session: self.session)
+			NotificationCenter.default.post(name: ADDED_STUDY_SESSION_NOTIFICATION, object: self.session)
+		}
+	}
 	@IBAction func leaveSession(_ sender: UIButton) {
 		impact.impactOccurred()
-		session.currentResponse = .canceled
-		delegate?.reloadCell(session: session)
-		self.dismiss(animated: true, completion: nil)
+		session.currentResponse = nil
+		self.dismiss(animated: true) {
+			self.delegate?.RemovedSession(session: self.session)
+			NotificationCenter.default.post(name: REMOVED_STUDY_SESSION_NOTIFICATION, object: self.session)
+		}
 	}
 	
 	
@@ -118,11 +131,19 @@ class SessionViewController: UIViewController, MKMapViewDelegate {
 		let addToCalendarTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.addToCalendarTap(_:)))
 		addToCalendarView.addGestureRecognizer(addToCalendarTapRecognizer)
 		
+		if let currentResponse = session.currentResponse, currentResponse == .confirmed {
+			
+			attendButton.isHidden = true
+			leaveButton.isHidden = false
+		} else {
+			attendButton.isHidden = false
+			leaveButton.isHidden = true
+		}
+		
 	}
 	
 	private func setNumbers() {
-		confirmedLabel.text = "\(session.numberConfirmed)"
-		canceledLabel.text = "\(session.numberCanceled)"
+		confirmedLabel.text = "Number attending: \(session.numberConfirmed)"
 	}
 }
 

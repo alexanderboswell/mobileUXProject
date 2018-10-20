@@ -17,7 +17,6 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 	@IBOutlet private weak var tableView: UITableView!
 	@IBOutlet private weak var profileImageView: UIImageView!
 	@IBOutlet private weak var nameLabel: UILabel!
-	@IBOutlet private weak var blurView: UIVisualEffectView!
 	
 	//MARK: Private variables
 	private var rows = [Any]()
@@ -51,7 +50,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 		impact.impactOccurred()
 		if let vc = segue.destination as? CourseViewController,
 			let course = sender as? Course {
-			slideInTransitioningDelegate.screenAmount = .Ratio3_6
+			slideInTransitioningDelegate.screenAmount = .Ratio2_6
 			vc.transitioningDelegate = slideInTransitioningDelegate
 			vc.modalPresentationStyle = .custom
 			
@@ -128,7 +127,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 			cell.course = course
 			return cell
 			
-		} else if let preference = rows[rowIndex] as? StudyPreference, let cell = tableView.dequeueReusableCell(withIdentifier: "PreferenceCell", for: indexPath) as? AccountPreferenceTableViewCell {
+		} else if let preference = rows[rowIndex] as? NotificationPreference, let cell = tableView.dequeueReusableCell(withIdentifier: "PreferenceCell", for: indexPath) as? AccountPreferenceTableViewCell {
 			
 			cell.selectionStyle = .none
 			cell.preference = preference
@@ -170,18 +169,16 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 	}
 	
 	private func setupProfileImage() {
-		let imageSize: CGFloat = 125.0
+		let imageSize: CGFloat = self.view.frame.height / 6 - 16
 		let x = self.profileImageView.frame.midX  - imageSize / 2
 		let y = self.profileImageView.frame.midY - imageSize / 2
 		profileImageView.frame = CGRect(x: x, y: y, width: imageSize, height: imageSize)
 		
 		profileImageView.layer.borderWidth = 2
 		profileImageView.layer.masksToBounds = false
-		profileImageView.layer.borderColor = UIColor.white.cgColor
+		profileImageView.layer.borderColor = UIColor.accentColor.cgColor
 		profileImageView.layer.cornerRadius = profileImageView.frame.height/2
 		profileImageView.clipsToBounds = true
-		
-		blurView.alpha = 0.45
 	}
 	
 	private func loadData(account: Account) {
@@ -192,8 +189,8 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 			rows.append(course)
 		}
 		
-		rows.append("Study Preferences")
-		for preference in account.studyPreferences {
+		rows.append("Notification Preferences")
+		for preference in account.notificationPreferences {
 			rows.append(preference)
 		}
 		tableView.reloadData()

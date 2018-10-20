@@ -33,14 +33,13 @@ class StudySession: NSObject, MKAnnotation {
 	var roomNumber: String
 	var building: String
 	var numberConfirmed: Int
-	var numberMaybe: Int
-	var numberCanceled: Int
 	var latitude: Double
 	var longitude: Double
 	var startDate: Date
 	var endDate: Date
 	
 	var currentResponse: Response?
+	var filterTitles = [String]()
 	
 	private let formatter = DateFormatter()
 	
@@ -79,7 +78,7 @@ class StudySession: NSObject, MKAnnotation {
 	
 	var endTime: String {
 		formatter.dateFormat = "hh:mm a"
-		return formatter.string(from: startDate)
+		return formatter.string(from: endDate)
 	}
 	
 	var date: String {
@@ -88,9 +87,8 @@ class StudySession: NSObject, MKAnnotation {
 	
 	init(courseTitle: String, startDateString: String, endDateString: String,
 		 roomNumber: String, building: String,
-		 numberConfirmed: Int, numberMaybe: Int,
-		 numberCanceled: Int, latitude: Double,
-		 longitude: Double, response: Response? = nil) {
+		 numberConfirmed: Int, latitude: Double,
+		 longitude: Double, response: Response? = nil, filterTitles: [String]? = nil) {
 		
 		formatter.dateFormat = "yyyy MM dd hh:mm a"
 		
@@ -100,10 +98,9 @@ class StudySession: NSObject, MKAnnotation {
 		self.roomNumber = roomNumber
 		self.building = building
 		self.numberConfirmed = numberConfirmed
-		self.numberMaybe = numberMaybe
-		self.numberCanceled = numberCanceled
 		self.latitude = latitude
 		self.longitude = longitude
 		self.currentResponse = response
+		self.filterTitles = filterTitles ?? []
 	}
 }

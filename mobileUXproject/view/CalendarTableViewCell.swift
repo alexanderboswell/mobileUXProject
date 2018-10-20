@@ -29,9 +29,15 @@ class CalendarTableViewCell: UITableViewCell {
 	
 	var session: StudySession! {
 		didSet {
-			setupConfirmView()
-			setupCancelView()
-			setNumbers()
+			
+			if let response = session.currentResponse, response == .confirmed {
+				cancelView.isHidden = false
+				confirmView.isHidden = true
+			} else {
+				cancelView.isHidden =  true
+				confirmView.isHidden = false
+			}
+//			setNumbers()
 			setLabels()
 		}
 	}
@@ -49,58 +55,8 @@ class CalendarTableViewCell: UITableViewCell {
 		cancelView.addGestureRecognizer(cancelRecognizer)
     }
 	
-	private func setupConfirmView() {
-		if let response = session.currentResponse, response == .confirmed {
-			setConfirmViewOpaque()
-		} else {
-			setConfirmViewTranslucent()
-		}
-	}
-	
-	private func setupCancelView() {
-		if let response = session.currentResponse, response == .canceled {
-			setCancelViewOpaque()
-		} else {
-			setCancelViewTranslucent()
-		}
-	}
-	
-	private func setConfirmViewOpaque() {
-		confirmView.backgroundColor = .confirmColor
-		confirmNumberLabel.textColor = .white
-		if let confirmImage = UIImage(named: "checkWhite") {
-			confirmImageView.image = confirmImage
-		}
-	}
-	
-	private func setCancelViewOpaque() {
-		cancelView.backgroundColor = .cancelColor
-		cancelNumberLabel.textColor = .white
-		if let cancelImage = UIImage(named: "xWhite") {
-			cancelImageView.image = cancelImage
-		}
-	}
-	
-	private func setConfirmViewTranslucent() {
-		confirmView.backgroundColor = .white
-		confirmNumberLabel.textColor = .confirmColor
-		if let confirmImage = UIImage(named: "check") {
-			confirmImageView.image = confirmImage
-		}
-	}
-	
-	private func setCancelViewTranslucent() {
-		cancelView.backgroundColor = .white
-		cancelNumberLabel.textColor = .cancelColor
-		
-		if let cancelImage = UIImage(named: "x") {
-			cancelImageView.image = cancelImage
-		}
-	}
-	
 	private func setNumbers() {
 		confirmNumberLabel.text = "\(session.numberConfirmed)"
-		cancelNumberLabel.text = "\(session.numberCanceled)"
 	}
 	
 	private func setLabels() {
@@ -111,20 +67,21 @@ class CalendarTableViewCell: UITableViewCell {
 	
 	@objc private func handleConfirmTap(_ sender: UITapGestureRecognizer) {
 		impact.impactOccurred()
-
-		setConfirmViewOpaque()
-		setCancelViewTranslucent()
+		
+		confirmView.isHidden = true
+		cancelView.isHidden = false
+		
 		
 		if session.currentResponse == nil || session.currentResponse != .confirmed {
 			session.numberConfirmed += 1
 			
-			if session.currentResponse == .canceled {
-				session.numberCanceled -= 1
-			}
+//			if session.currentResponse == .canceled {
+//				session.numberCanceled -= 1
+//			}
 			
 			session.currentResponse = .confirmed
 		}
-		setNumbers()
+//		setNumbers()
 		
 		NotificationCenter.default.post(name: ADDED_STUDY_SESSION_NOTIFICATION, object: session)
 	}
@@ -132,19 +89,19 @@ class CalendarTableViewCell: UITableViewCell {
 	@objc private func handleCancelTap(_ sender: UITapGestureRecognizer) {
 		impact.impactOccurred()
 		
-		setCancelViewOpaque()
-		setConfirmViewTranslucent()
-		
+		confirmView.isHidden = false
+		cancelView.isHidden = true
+
 		
 		if session.currentResponse == nil || session.currentResponse != .canceled {
-			session.numberCanceled += 1
+//			session.numberCanceled += 1
 			
 			if session.currentResponse == .confirmed {
 				session.numberConfirmed -= 1
 			}
 			session.currentResponse = .canceled
 		}
-		setNumbers()
+//		setNumbers()
 		
 		NotificationCenter.default.post(name: REMOVED_STUDY_SESSION_NOTIFICATION, object: session)
 	}

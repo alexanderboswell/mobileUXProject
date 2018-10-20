@@ -9,30 +9,21 @@
 import UIKit
 import JTAppleCalendar
 
-class CalendarViewController: UIViewController, FilterProtocol {
-
+class CalendarViewController: UIViewController, FilterProtocol, ResponseToSessionProtocol {
+	
 	@IBOutlet private weak var calendarView: JTAppleCalendarView!
 	@IBOutlet private weak var monthYearLabel: UILabel!
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var noSessionsLabel: UILabel!
+	@IBOutlet weak var filterAmountView: UIView!
+	@IBOutlet weak var filterAmountLabel: UILabel!
 	
 	let formatter = DateFormatter()
 	var savedDates = [String: Date]()
 	var filters = [String]()
 	var sessions = [StudySession]()
 	
-	var courseTitles: [String] {
-		var courseTitles:Set = Set<String>()
-		for key in sessionsForDate.keys {
-			for session in sessionsForDate[key] ?? [] {
-				courseTitles.insert(session.courseTitle)
-			}
-		}
-		
-		return Array(courseTitles)
-	}
-	
-	var sessionsForDate = [Date: [StudySession]]()
+	var filteredSessionsForDate = [Date: [StudySession]]()
 	lazy var slideInTransitioningDelegate = SlideInPresentationManager()
 	
     override func viewDidLoad() {
@@ -40,12 +31,11 @@ class CalendarViewController: UIViewController, FilterProtocol {
 		
 		setupCalendarView()
 		tableView.tableFooterView = UIView()
-		loadData()
+
     }
 	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
 		loadData()
 	}
 	
@@ -56,24 +46,56 @@ class CalendarViewController: UIViewController, FilterProtocol {
 			vc.modalPresentationStyle = .custom
 			
 			vc.slideInTransitioningDelegate = slideInTransitioningDelegate
-			vc.filters = filters
-			vc.courseTitles = courseTitles
 			vc.delegate = self
+		} else if let vc = segue.destination as? SessionViewController,
+				  let session = sender as? StudySession {
+			
+			vc.session = session
+			slideInTransitioningDelegate.screenAmount = .Ratio4_6
+			vc.transitioningDelegate = slideInTransitioningDelegate
+			vc.modalPresentationStyle = .custom
+			vc.slideInTransitioningDelegate = slideInTransitioningDelegate
+			
+			vc.delegate = self
+		}
+	}
+	
+	//MARK:
+	func AddedSession(session: StudySession) {
+		reloadCell(session: session)
+	}
+	
+	func RemovedSession(session: StudySession) {
+		reloadCell(session: session)
+	}
+	
+	
+	func reloadCell(session: StudySession) {
+		for (i, tempSession) in sessions.enumerated() {
+			if session == tempSession {
+					tableView.reloadRows(at: [IndexPath(row: i, section: 0)], with: .automatic)
+			}
 		}
 	}
 	
 	//MARK: FilterProtocol
 	
-	func addFilter(courseTitle: String) {
-		filters.append(courseTitle)
+	func filterChanged() {
 		loadData()
-	}
-	
-	func removeFilter(courseTitle: String) {
-		filters.removeAll { (filter) -> Bool in
-			return filter == courseTitle
+		var filterOnCount = 0
+		for filter in Client.filters {
+			if !filter.isOn {
+				filterOnCount += 1
+			}
 		}
-		loadData()
+		
+		if filterOnCount == 0 {
+			filterAmountView.isHidden = true
+		} else {
+			filterAmountView.isHidden = false
+			filterAmountLabel.text = "\(filterOnCount)"
+		}
+	
 	}
 	
 	private func setupCalendarView() {
@@ -147,7 +169,7 @@ class CalendarViewController: UIViewController, FilterProtocol {
 	}
 	
 	private func handleSessionIndicatorHidden(cell: CalendarCollectionViewCell, date: Date) {
-		if let sessions = sessionsForDate[date], sessions.count != 0 {
+		if let sessions = filteredSessionsForDate[date], sessions.count != 0 {
 			cell.sessionsIndictatorView.isHidden = false
 		} else {
 			cell.sessionsIndictatorView.isHidden = true
@@ -165,8 +187,21 @@ class CalendarViewController: UIViewController, FilterProtocol {
 	
 	private func loadData() {
 		Client.getSessions { (sessionsForDate) in
-//			self.sessionsForDate = self.checkFilters(sessionsForDate: sessionsForDate)
-			self.sessionsForDate = sessionsForDate
+			self.filteredSessionsForDate = sessionsForDate
+			
+			for key in sessionsForDate.keys {
+				for session in sessionsForDate[key] ?? [] {
+					for filterTitle in session.filterTitles {
+						for clientFilter in Client.filters {
+							if clientFilter.title == filterTitle, clientFilter.isOn == false {
+								self.filteredSessionsForDate[key]?.removeAll(where: { (tempSession) -> Bool in
+									return session == tempSession
+								})
+							}
+						}
+					}
+				}
+			}
 			
 			self.calendarView.visibleDates { (visibleDates) in
 				self.loadDataForDate(date: self.getSelectedDate(visibleDates: visibleDates))
@@ -175,20 +210,8 @@ class CalendarViewController: UIViewController, FilterProtocol {
 		}
 	}
 	
-//	private func checkFilters(sessionsForDate: [Date: [StudySession]]) -> [Date: [StudySession]] {
-//		var newSessionsForDate = sessionsForDate
-//		for key in newSessionsForDate.keys {
-//			for (i, session) in (newSessionsForDate[key] ?? []).enumerated() {
-//				if filters.contains(session.courseTitle) {
-//					newSessionsForDate[key]?.remove(at: i)
-//				}
-//			}
-//		}
-//		return newSessionsForDate
-//	}
-	
 	private func loadDataForDate(date: Date) {
-		if let sessions = sessionsForDate[date] {
+		if let sessions = filteredSessionsForDate[date], sessions.count != 0 {
 			self.sessions = sessions
 			self.noSessionsLabel.isHidden = true
 		} else {
@@ -213,12 +236,16 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "calendarTableCell", for: indexPath) as? CalendarTableViewCell else { return UITableViewCell() }
 		
 		cell.session = sessions[indexPath.row]
-		
+		cell.selectionStyle = .none
 		return cell
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return 88.0
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		performSegue(withIdentifier: "showStudySession", sender: sessions[indexPath.row])
 	}
 	
 }

@@ -8,48 +8,36 @@
 
 import UIKit
 
-
 protocol FilterProtocol {
-	func addFilter(courseTitle: String)
-	func removeFilter(courseTitle: String)
+	func filterChanged()
 }
 
 class FilterTableViewCell: UITableViewCell {
 
-	@IBOutlet weak var courseTitleLabel: UILabel!
-	@IBOutlet weak var selectedView: UIView!
-	
+	@IBOutlet weak var titleLabel: UILabel!
+	@IBOutlet weak var filterSwitch: UISwitch!
+
 	private let impact = UIImpactFeedbackGenerator()
 	
-	var courseTitle: String!
+	var title: String! {
+		didSet {
+			titleLabel.text = title
+		}
+	}
+	var isOn: Bool! {
+		didSet {
+			filterSwitch.isOn = isOn
+		}
+	}
 	
-	var isOn: Bool!
 	var delegate: FilterProtocol?
 	
-	override func awakeFromNib() {
-		super.awakeFromNib()
-		let addFilterRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.addToFilterTap(_:)))
-		selectedView.addGestureRecognizer(addFilterRecognizer)
-	}
-	
-	override func layoutSubviews() {
-		super.layoutSubviews()
-		
-		selectedView.layer.borderWidth = 1.5
-		selectedView.layer.borderColor = UIColor.accentColor.cgColor
-		selectedView.layer.masksToBounds = true
-	}
-	
-	@objc func addToFilterTap(_ sender: UITapGestureRecognizer) {
-		impact.impactOccurred()
-		if isOn {
-			selectedView.backgroundColor = .white
-			delegate?.removeFilter(courseTitle: courseTitle)
-		} else {
-			selectedView.backgroundColor = .accentColor
-			delegate?.addFilter(courseTitle: courseTitle)
+	@IBAction func onChange(_ sender: UISwitch) {
+		for filter in Client.filters {
+			if filter.title == title {
+				filter.isOn = sender.isOn
+			}
 		}
-		
-		isOn = !isOn
+		delegate?.filterChanged()
 	}
 }

@@ -13,7 +13,7 @@ class AccountPreferenceTableViewCell: UITableViewCell {
 	@IBOutlet weak var preferenceSwitch: UISwitch!
 	@IBOutlet weak var preferenceLabel: UILabel!
 	
-	var preference: StudyPreference? {
+	var preference: NotificationPreference? {
 		didSet {
 			preferenceLabel.text = preference?.description
 			preferenceSwitch.isOn = preference?.checked ?? true
@@ -23,5 +23,7 @@ class AccountPreferenceTableViewCell: UITableViewCell {
 	
 	@IBAction func setPreference(_ sender: UISwitch) {
 		preference?.checked = sender.isOn
+	}
+	@IBAction func onFilterChange(_ sender: UISwitch) {
 	}
 }

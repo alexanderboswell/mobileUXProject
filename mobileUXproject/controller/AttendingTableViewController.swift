@@ -16,27 +16,53 @@ class AttendingTableViewController: UIViewController, ResponseToSessionProtocol 
 	
 	private let impact = UIImpactFeedbackGenerator()
 	private var sessions = [StudySession]()
+	private var badgeValue = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: ADDED_STUDY_SESSION_NOTIFICATION, object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: REMOVED_STUDY_SESSION_NOTIFICATION, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(addSession), name: ADDED_STUDY_SESSION_NOTIFICATION, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(removeSession), name: REMOVED_STUDY_SESSION_NOTIFICATION, object: nil)
 		
 		loadData()
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		
+		badgeValue = 0
+		self.tabBarController?.tabBar.items?[0].badgeValue = nil
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if let vc = segue.destination as? SessionViewController,
 			let session = sender as? StudySession {
 			vc.session = session
-			slideInTransitioningDelegate.screenAmount = .Ratio5_6
+			slideInTransitioningDelegate.screenAmount = .Ratio4_6
 			vc.transitioningDelegate = slideInTransitioningDelegate
 			vc.modalPresentationStyle = .custom
 			vc.slideInTransitioningDelegate = slideInTransitioningDelegate
 			
 			vc.delegate = self
 		}
+	}
+	
+	@objc func addSession() {
+		badgeValue += 1
+		self.tabBarController?.tabBar.items?[0].badgeValue = "\(badgeValue)"
+		loadData()
+	}
+	
+	@objc func removeSession() {
+		badgeValue -= 1
+		if badgeValue <= 0 {
+			badgeValue = 0
+			self.tabBarController?.tabBar.items?[0].badgeValue = nil
+		} else {
+			self.tabBarController?.tabBar.items?[0].badgeValue = "\(badgeValue)"
+		}
+		
+		loadData()
 	}
 	
 	@objc func loadData() {
@@ -60,6 +86,18 @@ class AttendingTableViewController: UIViewController, ResponseToSessionProtocol 
 	}
 	
 	//MARK: ResponseToSessionProtocol
+	
+	func AddedSession(session: StudySession) {
+		reloadCell(session: session)
+		NotificationCenter.default.post(name: ADDED_STUDY_SESSION_NOTIFICATION, object: session)
+	}
+	
+	func RemovedSession(session: StudySession) {
+		reloadCell(session: session)
+		NotificationCenter.default.post(name: REMOVED_STUDY_SESSION_NOTIFICATION, object: session)
+	}
+	
+	
 	
 	func reloadCell(session: StudySession) {
 		for (i, tempSession) in sessions.enumerated() {

@@ -21,31 +21,92 @@ class Client {
 			], profileImage: UIImage(named: "user1")!)
 	]
 	
+	static var filters = [
+		Filter(title: "CS 455", isOn: true),
+		Filter(title: "CS 356", isOn: true),
+		Filter(title: "MATH 334", isOn: true),
+		Filter(title: "Working with only students in my section", isOn: true),
+		Filter(title: "Available on the weekend", isOn: true),
+		Filter(title: "Group sizes of 4+", isOn: true),
+		Filter(title: "Prefer to study in a no shhhh zone", isOn: true),
+		Filter(title: "Study with background music", isOn: true)
+	]
+	
+	
 	static var sessionsForDate = [
 		formatter.date(from: "2018 10 31")! : [
-			StudySession(courseTitle: "CS 455", startDateString: "2018 10 31 04:30 pm", endDateString: "2018 10 31 05:30 pm", roomNumber: "3104", building: "JKB", numberConfirmed: 0, numberMaybe: 6, numberCanceled: 2, latitude: 40.249801, longitude: -111.6508399)],
+			StudySession(courseTitle: "CS 455", startDateString: "2018 10 31 04:30 pm", endDateString: "2018 10 31 05:30 pm", roomNumber: "3104", building: "JKB", numberConfirmed: 0, latitude: 40.249801, longitude: -111.6508399, filterTitles:[
+					"CS 455",
+					"Study with background music",
+					"Prefer to study in a no shhhh zone"
+				])],
 		formatter.date(from: "2018 11 05")! : [
-			StudySession(courseTitle: "CS 455", startDateString: "2018 11 05 10:30 am", endDateString: "2018 11 05 11:30 am", roomNumber: "3104", building: "JKB", numberConfirmed: 0, numberMaybe: 6, numberCanceled: 2, latitude: 40.249801, longitude: -111.6508399)],
+			StudySession(courseTitle: "CS 455", startDateString: "2018 11 05 10:30 am", endDateString: "2018 11 05 11:30 am", roomNumber: "3104", building: "JKB", numberConfirmed: 0, latitude: 40.249801, longitude: -111.6508399, filterTitles:[
+				"CS 455",
+				"Working with only students in my section"
+				])],
 		formatter.date(from: "2018 11 09")! : [
-			StudySession(courseTitle: "CS 356",startDateString: "2018 11 09 01:30 pm", endDateString: "2018 11 09 02:30 pm", roomNumber: "2111", building: "JKB", numberConfirmed: 6, numberMaybe: 0, numberCanceled: 3, latitude: 40.249801, longitude: -111.6508399),
-			StudySession(courseTitle: "CS 455", startDateString: "2018 11 09 04:30 pm", endDateString: "2018 11 09 05:30 pm", roomNumber: "3104", building: "JKB", numberConfirmed: 0, numberMaybe: 6, numberCanceled: 2, latitude: 40.249801, longitude: -111.6508399)
+			StudySession(courseTitle: "CS 356",startDateString: "2018 11 09 01:30 pm", endDateString: "2018 11 09 02:30 pm", roomNumber: "2111", building: "JKB", numberConfirmed: 6, latitude: 40.249801, longitude: -111.6508399, filterTitles:[
+				"CS 356"
+				]),
+			StudySession(courseTitle: "CS 455", startDateString: "2018 11 09 04:30 pm", endDateString: "2018 11 09 05:30 pm", roomNumber: "3104", building: "JKB", numberConfirmed: 0, latitude: 40.249801, longitude: -111.6508399, filterTitles:[
+				"CS 455",
+				"Working with only students in my section"
+				])
 		],
 		formatter.date(from: "2018 10 25")! : [
-			StudySession(courseTitle: "CS 356", startDateString: "2018 10 25 10:00 am", endDateString: "2018 10 25 11:00 am", roomNumber: "2111", building: "JKB", numberConfirmed: 6, numberMaybe: 0, numberCanceled: 3, latitude: 40.249801, longitude: -111.6508399),
-			StudySession(courseTitle: "CS 356", startDateString: "2018 10 25 10:30 am", endDateString: "2018 10 25 11:30 am", roomNumber: "2111", building: "JKB", numberConfirmed: 6, numberMaybe: 0, numberCanceled: 3, latitude: 40.249801, longitude: -111.6508399),
-			StudySession(courseTitle: "MATH 334", startDateString: "2018 10 25 01:00 pm", endDateString: "2018 10 25 02:00 pm", roomNumber: "1170", building: "TMCB", numberConfirmed: 3, numberMaybe: 2, numberCanceled: 4, latitude: 40.249801, longitude: -111.6508399),
-			StudySession(courseTitle: "CS 455", startDateString: "2018 10 25 04:00 pm", endDateString: "2018 10 25 05:00 pm", roomNumber: "3104", building: "JKB", numberConfirmed: 1, numberMaybe: 6, numberCanceled: 2, latitude: 40.249801, longitude: -111.6508399)],
+			StudySession(courseTitle: "CS 356", startDateString: "2018 10 25 10:00 am", endDateString: "2018 10 25 11:00 am", roomNumber: "2111", building: "JKB", numberConfirmed: 6, latitude: 40.249801, longitude: -111.6508399, filterTitles:[
+				"CS 356",
+				"Group sizes of 4+"
+				]),
+			StudySession(courseTitle: "CS 356", startDateString: "2018 10 25 10:30 am", endDateString: "2018 10 25 11:30 am", roomNumber: "2111", building: "JKB", numberConfirmed: 6, latitude: 40.249801, longitude: -111.6508399, filterTitles:[
+				"CS 356",
+				"Group sizes of 4+"
+				]),
+			StudySession(courseTitle: "MATH 334", startDateString: "2018 10 25 01:00 pm", endDateString: "2018 10 25 02:00 pm", roomNumber: "1170", building: "TMCB", numberConfirmed: 3, latitude: 40.249801, longitude: -111.6508399, filterTitles:[
+				"MATH 334"
+				]),
+			StudySession(courseTitle: "CS 455", startDateString: "2018 10 25 04:00 pm", endDateString: "2018 10 25 05:00 pm", roomNumber: "3104", building: "JKB", numberConfirmed: 1, latitude: 40.249801, longitude: -111.6508399, filterTitles:[
+				"CS 455",
+				"Working with only students in my section"
+				])],
 		formatter.date(from: "2018 10 18")! : [
-			StudySession(courseTitle: "CS 356", startDateString: "2018 10 18 08:30 am", endDateString: "2018 10 18 09:30 am", roomNumber: "2111", building: "JKB", numberConfirmed: 6, numberMaybe: 0, numberCanceled: 3, latitude: 40.249801, longitude: -111.6508399),
-			StudySession(courseTitle: "CS 356", startDateString: "2018 10 18 10:45 am", endDateString: "2018 10 18 11:45 am", roomNumber: "2111", building: "JKB", numberConfirmed: 6, numberMaybe: 0, numberCanceled: 3, latitude: 40.249801, longitude: -111.6508399)],
+			StudySession(courseTitle: "CS 356", startDateString: "2018 10 18 08:30 am", endDateString: "2018 10 18 09:30 am", roomNumber: "2111", building: "JKB", numberConfirmed: 6, latitude: 40.249801, longitude: -111.6508399, filterTitles:[
+				"CS 356",
+				"Group sizes of 4+"
+				]),
+			StudySession(courseTitle: "CS 356", startDateString: "2018 10 18 10:45 am", endDateString: "2018 10 18 11:45 am", roomNumber: "2111", building: "JKB", numberConfirmed: 6, latitude: 40.249801, longitude: -111.6508399, filterTitles:[
+				"CS 356",
+				"Prefer to study in a no shhhh zone",
+				"Group sizes of 4+"
+				])],
 		formatter.date(from: "2018 10 23")! : [
-			StudySession(courseTitle: "CS 356", startDateString: "2018 10 23 10:00 am", endDateString: "2018 10 23 11:30 am", roomNumber: "2111", building: "JKB", numberConfirmed: 6, numberMaybe: 0, numberCanceled: 3, latitude: 40.249801, longitude: -111.6508399),
-			StudySession(courseTitle: "CS 356", startDateString: "2018 10 23 10:45 am", endDateString: "2018 10 23 11:45 am", roomNumber: "2111", building: "JKB", numberConfirmed: 6, numberMaybe: 0, numberCanceled: 3, latitude: 40.249801, longitude: -111.6508399),
-			StudySession(courseTitle: "MATH 334", startDateString: "2018 10 23 01:15 pm", endDateString: "2018 10 23 02:45 pm", roomNumber: "1170", building: "TMCB", numberConfirmed: 3, numberMaybe: 2, numberCanceled: 4, latitude: 40.249801, longitude: -111.6508399),
-			StudySession(courseTitle: "CS 455", startDateString: "2018 10 23 04:30 pm", endDateString: "2018 10 23 05:30 pm", roomNumber: "3104", building: "JKB", numberConfirmed: 0, numberMaybe: 6, numberCanceled: 2, latitude: 40.249801, longitude: -111.6508399)],
+			StudySession(courseTitle: "CS 356", startDateString: "2018 10 23 10:00 am", endDateString: "2018 10 23 11:30 am", roomNumber: "2111", building: "JKB", numberConfirmed: 6, latitude: 40.249801, longitude: -111.6508399, filterTitles:[
+				"CS 356",
+				"Prefer to study in a no shhhh zone",
+				"Group sizes of 4+"
+				]),
+			StudySession(courseTitle: "CS 356", startDateString: "2018 10 23 10:45 am", endDateString: "2018 10 23 11:45 am", roomNumber: "2111", building: "JKB", numberConfirmed: 6, latitude: 40.249801, longitude: -111.6508399, filterTitles:[
+				"CS 356",
+				"Group sizes of 4+"
+				]),
+			StudySession(courseTitle: "MATH 334", startDateString: "2018 10 23 01:15 pm", endDateString: "2018 10 23 02:45 pm", roomNumber: "1170", building: "TMCB", numberConfirmed: 3, latitude: 40.249801, longitude: -111.6508399, filterTitles:[
+				"MATH 334",
+				"Working with only students in my section"
+				]),
+			StudySession(courseTitle: "CS 455", startDateString: "2018 10 23 04:30 pm", endDateString: "2018 10 23 05:30 pm", roomNumber: "3104", building: "JKB", numberConfirmed: 0, latitude: 40.249801, longitude: -111.6508399, filterTitles:[
+				"CS 455",
+				"Study with background music"
+				])],
 		formatter.date(from: "2018 10 27")! : [
-			StudySession(courseTitle: "MATH 334", startDateString: "2018 10 27 01:30 pm", endDateString: "2018 10 27 02:30 pm", roomNumber: "1170", building: "TMCB", numberConfirmed: 3, numberMaybe: 2, numberCanceled: 4, latitude: 40.249801, longitude: -111.6508399),
-			StudySession(courseTitle: "CS 455", startDateString: "2018 10 27 04:30 pm", endDateString: "2018 10 27 05:30 pm", roomNumber: "3104", building: "JKB", numberConfirmed: 0, numberMaybe: 6, numberCanceled: 2, latitude: 40.249801, longitude: -111.6508399)],
+			StudySession(courseTitle: "MATH 334", startDateString: "2018 10 27 01:30 pm", endDateString: "2018 10 27 02:30 pm", roomNumber: "1170", building: "TMCB", numberConfirmed: 3, latitude: 40.249801, longitude: -111.6508399, filterTitles:[
+				"MATH 334",
+				"Available on the weekend"
+				]),
+			StudySession(courseTitle: "CS 455", startDateString: "2018 10 27 04:30 pm", endDateString: "2018 10 27 05:30 pm", roomNumber: "3104", building: "JKB", numberConfirmed: 0, latitude: 40.249801, longitude: -111.6508399, filterTitles:[
+				"CS 455",
+				"Available on the weekend"
+				])],
 		]
 	
 	static func getSessions(callback: @escaping ([Date: [StudySession]])  -> Void) {

@@ -13,7 +13,7 @@ class Account {
 	var name: String
 	var profileImage: UIImage
 	var courses: [Course]
-	var studyPreferences = [StudyPreference]()
+	var notificationPreferences = [NotificationPreference]()
 	
 	//MARK: Preferences
 	var sectionOnly = false
@@ -25,12 +25,12 @@ class Account {
 	init(name: String, courses: [Course], profileImage: UIImage) {
 		self.name = name
 		self.courses = courses
-		self.studyPreferences = [
-			StudyPreference(description: "Working with only students in my section"),
-			StudyPreference(description: "Available on the weekend"),
-			StudyPreference(description: "Group sizes of 4+"),
-			StudyPreference(description: "Prefer to study in a no shhhh zone"),
-			StudyPreference(description: "Study with background music")
+		self.notificationPreferences = [
+			NotificationPreference(description: "1"),
+			NotificationPreference(description: "2"),
+			NotificationPreference(description: "3"),
+			NotificationPreference(description: "4"),
+			NotificationPreference(description: "5")
 		]
 		self.profileImage = profileImage
 	}
